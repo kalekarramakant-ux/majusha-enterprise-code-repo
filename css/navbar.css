@@ -4,12 +4,9 @@
   border-bottom:1px solid rgba(200,151,58,0.25);
   padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:72px;
 }
-.logo-wrap { display:flex; align-items:center; gap:12px; text-decoration:none; }
-.logo-icon {
-  width:48px; height:48px; background:linear-gradient(135deg,var(--gold),var(--green-mid));
-  border-radius:10px; display:flex; align-items:center; justify-content:center;
-  font-family:'Playfair Display',serif; font-size:22px; font-weight:900; color:white;
-  box-shadow:0 4px 16px rgba(200,151,58,0.4);
+.logo-wrap { display:flex; align-items:center; gap:10px; text-decoration:none; }
+.logo-img {
+  height:56px; width:auto; object-fit:contain;
 }
 .logo-text { display:flex; flex-direction:column; }
 .logo-name { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; color:var(--gold); line-height:1.1; }
