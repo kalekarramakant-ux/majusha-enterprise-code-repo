@@ -1,645 +1,25 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manjusha Enterprises – Global Agro Exports</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --gold: #C8973A;
-    --gold-light: #E8B95A;
-    --dark: #1A1208;
-    --deep: #0F0B05;
-    --cream: #FAF6EE;
-    --cream2: #F2EAD8;
-    --green: #2D5A1B;
-    --green-mid: #3D7A25;
-    --green-light: #5A9E3A;
-    --red-dot: #E63946;
-    --text: #2C2010;
-    --text-light: #6B5E4A;
-    --white: #FFFFFF;
-    --shadow: 0 8px 32px rgba(26,18,8,0.15);
-    --shadow-deep: 0 20px 60px rgba(26,18,8,0.25);
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--text);
-    overflow-x: hidden;
-  }
-
-  /* ── NAVBAR ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    background: rgba(15,11,5,0.96);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(200,151,58,0.25);
-    padding: 0 2rem;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 72px;
-  }
-
-  .logo-wrap {
-    display: flex; align-items: center; gap: 12px; text-decoration: none;
-  }
-
-  .logo-icon {
-    width: 48px; height: 48px;
-    background: linear-gradient(135deg, var(--gold), var(--green-mid));
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 22px; font-weight: 900; color: white;
-    box-shadow: 0 4px 16px rgba(200,151,58,0.4);
-  }
-
-  .logo-text { display: flex; flex-direction: column; }
-  .logo-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px; font-weight: 700; color: var(--gold);
-    line-height: 1.1;
-  }
-  .logo-tagline { font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase; }
-
-  .nav-links {
-    display: flex; align-items: center; gap: 0; list-style: none;
-  }
-
-  .nav-links li { position: relative; }
-
-  .nav-links a {
-    display: block; padding: 0 18px; height: 72px;
-    line-height: 72px;
-    color: rgba(255,255,255,0.85);
-    text-decoration: none; font-size: 14px; font-weight: 500;
-    letter-spacing: 0.3px;
-    transition: color 0.2s, background 0.2s;
-  }
-  .nav-links a:hover { color: var(--gold); background: rgba(200,151,58,0.08); }
-  .nav-links a.active { color: var(--gold); }
-
-  .has-dropdown:hover .dropdown { display: block; }
-
-  .dropdown {
-    display: none; position: absolute; top: 72px; left: 0;
-    background: rgba(15,11,5,0.98);
-    border: 1px solid rgba(200,151,58,0.2);
-    border-top: 2px solid var(--gold);
-    min-width: 200px;
-    box-shadow: 0 16px 40px rgba(0,0,0,0.4);
-    border-radius: 0 0 8px 8px;
-  }
-  .dropdown a {
-    height: auto; line-height: 1.4; padding: 12px 20px;
-    font-size: 13px; display: flex; align-items: center; gap: 8px;
-  }
-  .dropdown a::before { content: '→'; color: var(--gold); font-size: 11px; }
-
-  .nav-cta {
-    background: linear-gradient(135deg, var(--gold), var(--gold-light)) !important;
-    color: var(--dark) !important; font-weight: 600 !important;
-    border-radius: 6px; margin-left: 12px;
-    padding: 0 20px !important; height: 40px !important;
-    line-height: 40px !important; align-self: center;
-  }
-  .nav-cta:hover { opacity: 0.9; background: var(--gold-light) !important; }
-
-  .hamburger {
-    display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px;
-  }
-  .hamburger span { display: block; width: 24px; height: 2px; background: var(--gold); border-radius: 2px; transition: 0.3s; }
-
-  /* ── PAGES ── */
-  .page { display: none; }
-  .page.active { display: block; }
-
-  /* ── HERO BANNER ── */
-  .hero {
-    position: relative; min-height: 100vh;
-    display: flex; align-items: center;
-    overflow: hidden; padding-top: 72px;
-  }
-
-  .hero-bg {
-    position: absolute; inset: 0;
-    background:
-      linear-gradient(135deg, rgba(15,11,5,0.88) 0%, rgba(26,18,8,0.7) 50%, rgba(45,90,27,0.6) 100%),
-      url('https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=1800&q=80') center/cover no-repeat;
-  }
-
-  .hero-pattern {
-    position: absolute; inset: 0;
-    background-image: radial-gradient(circle at 20% 50%, rgba(200,151,58,0.08) 0%, transparent 50%),
-                      radial-gradient(circle at 80% 20%, rgba(45,90,27,0.1) 0%, transparent 40%);
-  }
-
-  .hero-content {
-    position: relative; z-index: 2;
-    max-width: 1200px; margin: 0 auto; padding: 0 2rem;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
-  }
-
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(200,151,58,0.15); border: 1px solid rgba(200,151,58,0.3);
-    color: var(--gold); padding: 6px 16px; border-radius: 100px;
-    font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    animation: fadeInUp 0.8s ease both;
-  }
-  .hero-badge::before { content: '🌿'; font-size: 14px; }
-
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.8rem, 5vw, 4.5rem);
-    font-weight: 900; color: var(--white);
-    line-height: 1.1; margin-bottom: 1.5rem;
-    animation: fadeInUp 0.8s 0.1s ease both;
-  }
-  .hero h1 em { color: var(--gold); font-style: normal; }
-
-  .hero p {
-    font-size: 1.1rem; color: rgba(255,255,255,0.75);
-    line-height: 1.8; max-width: 480px; margin-bottom: 2rem;
-    animation: fadeInUp 0.8s 0.2s ease both;
-  }
-
-  .hero-buttons {
-    display: flex; gap: 1rem; flex-wrap: wrap;
-    animation: fadeInUp 0.8s 0.3s ease both;
-  }
-
-  .btn-primary {
-    background: linear-gradient(135deg, var(--gold), var(--gold-light));
-    color: var(--dark); padding: 14px 32px;
-    border-radius: 8px; font-weight: 700; font-size: 15px;
-    text-decoration: none; border: none; cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 6px 24px rgba(200,151,58,0.4);
-    display: inline-flex; align-items: center; gap: 8px;
-  }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(200,151,58,0.5); }
-
-  .btn-outline {
-    background: transparent; color: var(--white);
-    padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 15px;
-    text-decoration: none; border: 1.5px solid rgba(255,255,255,0.35); cursor: pointer;
-    transition: all 0.2s;
-    display: inline-flex; align-items: center; gap: 8px;
-  }
-  .btn-outline:hover { border-color: var(--gold); color: var(--gold); background: rgba(200,151,58,0.08); }
-
-  .hero-stats {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
-    animation: fadeInUp 0.8s 0.4s ease both;
-    margin-top: 2rem;
-  }
-  .stat-card {
-    background: rgba(255,255,255,0.06); backdrop-filter: blur(8px);
-    border: 1px solid rgba(200,151,58,0.2); border-radius: 12px;
-    padding: 16px; text-align: center;
-  }
-  .stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem; font-weight: 700; color: var(--gold); line-height: 1;
-  }
-  .stat-label { font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 4px; letter-spacing: 0.5px; text-transform: uppercase; }
-
-  .hero-right { animation: fadeInRight 0.9s 0.2s ease both; }
-
-  .hero-product-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
-  }
-  .hero-prod-card {
-    background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);
-    border: 1px solid rgba(200,151,58,0.2); border-radius: 12px;
-    overflow: hidden; transition: transform 0.3s, border-color 0.3s;
-  }
-  .hero-prod-card:hover { transform: translateY(-4px); border-color: var(--gold); }
-  .hero-prod-card img { width: 100%; height: 100px; object-fit: cover; }
-  .hero-prod-card span {
-    display: block; padding: 8px 12px;
-    font-size: 12px; color: rgba(255,255,255,0.8); font-weight: 500;
-  }
-
-  /* ── SECTION COMMONS ── */
-  section { padding: 80px 2rem; }
-  .container { max-width: 1200px; margin: 0 auto; }
-
-  .section-tag {
-    display: inline-flex; align-items: center; gap: 6px;
-    color: var(--green-mid); font-size: 12px; font-weight: 600;
-    letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 1rem;
-  }
-  .section-tag::before { content: ''; display: block; width: 24px; height: 2px; background: var(--green-mid); }
-
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700; color: var(--dark); line-height: 1.2;
-    margin-bottom: 1rem;
-  }
-  .section-title em { color: var(--green-mid); font-style: normal; }
-
-  .section-sub {
-    font-size: 1.05rem; color: var(--text-light); line-height: 1.8; max-width: 600px;
-    margin-bottom: 3rem;
-  }
-
-  /* ── ABOUT SNIPPET ── */
-  .about-strip {
-    background: var(--dark);
-    padding: 80px 2rem;
-  }
-  .about-inner {
-    max-width: 1200px; margin: 0 auto;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
-  }
-  .about-img-wrap { position: relative; }
-  .about-img-wrap img {
-    width: 100%; height: 420px; object-fit: cover;
-    border-radius: 16px;
-    box-shadow: var(--shadow-deep);
-  }
-  .about-badge-float {
-    position: absolute; bottom: -20px; right: -20px;
-    background: var(--gold);
-    color: var(--dark); border-radius: 12px; padding: 16px 20px;
-    font-family: 'Playfair Display', serif; font-weight: 700;
-    font-size: 14px; text-align: center;
-    box-shadow: 0 8px 24px rgba(200,151,58,0.4);
-  }
-  .about-badge-float strong { display: block; font-size: 2rem; }
-
-  .about-text .section-title { color: var(--white); }
-  .about-text .section-sub { color: rgba(255,255,255,0.65); }
-  .about-features { display: flex; flex-direction: column; gap: 14px; margin-top: 1.5rem; }
-  .feat-item {
-    display: flex; align-items: flex-start; gap: 12px;
-    background: rgba(255,255,255,0.05); border: 1px solid rgba(200,151,58,0.15);
-    border-radius: 10px; padding: 14px 16px;
-  }
-  .feat-icon {
-    width: 36px; height: 36px; min-width: 36px;
-    background: rgba(200,151,58,0.15); border-radius: 8px;
-    display: flex; align-items: center; justify-content: center; font-size: 16px;
-  }
-  .feat-title { font-weight: 600; color: var(--white); font-size: 14px; }
-  .feat-desc { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px; }
-
-  /* ── PRODUCTS GRID ── */
-  .products-section { background: var(--cream2); padding: 80px 2rem; }
-
-  .products-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px;
-    margin-bottom: 3rem;
-  }
-
-  .prod-card {
-    background: var(--white); border-radius: 16px;
-    overflow: hidden; box-shadow: 0 4px 20px rgba(26,18,8,0.08);
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
-  }
-  .prod-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(26,18,8,0.16); }
-
-  .prod-img { position: relative; overflow: hidden; }
-  .prod-img img { width: 100%; height: 200px; object-fit: cover; transition: transform 0.4s; }
-  .prod-card:hover .prod-img img { transform: scale(1.06); }
-
-  .prod-tag {
-    position: absolute; top: 12px; right: 12px;
-    background: var(--green); color: white;
-    font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
-    padding: 4px 10px; border-radius: 100px;
-  }
-
-  .prod-info { padding: 18px 20px; }
-  .prod-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.15rem; font-weight: 700; color: var(--dark); margin-bottom: 6px;
-  }
-  .prod-desc { font-size: 13px; color: var(--text-light); line-height: 1.6; }
-  .prod-footer {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--cream2);
-  }
-  .prod-origin { font-size: 11px; color: var(--green-mid); font-weight: 600; display: flex; align-items: center; gap: 4px; }
-  .prod-btn {
-    background: var(--green); color: white;
-    font-size: 12px; font-weight: 600; padding: 6px 14px;
-    border-radius: 6px; text-decoration: none; transition: background 0.2s;
-    border: none; cursor: pointer;
-  }
-  .prod-btn:hover { background: var(--green-mid); }
-
-  .view-all-wrap { text-align: center; margin-top: 1rem; }
-
-  /* ── WORLD MAP ── */
-  .world-section {
-    background: linear-gradient(160deg, var(--dark) 0%, #1a2e10 100%);
-    padding: 80px 2rem; text-align: center;
-  }
-  .world-section .section-title { color: var(--white); }
-  .world-section .section-sub { color: rgba(255,255,255,0.6); margin: 0 auto 3rem; }
-
-  .map-container {
-    position: relative; max-width: 900px; margin: 0 auto;
-    background: rgba(255,255,255,0.03); border: 1px solid rgba(200,151,58,0.15);
-    border-radius: 20px; padding: 2rem;
-    box-shadow: 0 0 60px rgba(45,90,27,0.3);
-  }
-
-  .world-svg { width: 100%; height: auto; }
-
-  /* Red dot pulse */
-  .dot-pulse {
-    animation: pulse-red 2s infinite;
-    cursor: pointer;
-  }
-  @keyframes pulse-red {
-    0% { r: 5; opacity: 1; }
-    50% { r: 7; opacity: 0.7; }
-    100% { r: 5; opacity: 1; }
-  }
-
-  .map-legend {
-    display: flex; justify-content: center; align-items: center; gap: 24px;
-    margin-top: 2rem; flex-wrap: wrap;
-  }
-  .legend-item { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.7); font-size: 13px; }
-  .legend-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--red-dot); box-shadow: 0 0 8px var(--red-dot); }
-
-  .country-tags {
-    display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 2rem;
-  }
-  .c-tag {
-    background: rgba(200,151,58,0.12); border: 1px solid rgba(200,151,58,0.25);
-    color: var(--gold); font-size: 12px; font-weight: 500;
-    padding: 5px 14px; border-radius: 100px;
-  }
-
-  /* ── QUERY FORM ── */
-  .query-section {
-    background: var(--cream2); padding: 80px 2rem;
-  }
-  .form-wrapper {
-    max-width: 780px; margin: 0 auto;
-    background: var(--white); border-radius: 20px;
-    padding: 48px; box-shadow: var(--shadow-deep);
-    border: 1px solid rgba(200,151,58,0.15);
-  }
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .form-group { display: flex; flex-direction: column; gap: 6px; }
-  .form-group.full { grid-column: 1 / -1; }
-  .form-group label { font-size: 13px; font-weight: 600; color: var(--text); }
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    padding: 12px 16px; border: 1.5px solid #E0D8CC;
-    border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px;
-    color: var(--text); background: var(--cream); outline: none;
-    transition: border-color 0.2s;
-  }
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus { border-color: var(--green-mid); }
-  .form-group textarea { resize: vertical; min-height: 120px; }
-  .form-submit {
-    margin-top: 24px; text-align: center;
-  }
-  .form-submit button {
-    background: linear-gradient(135deg, var(--green), var(--green-mid));
-    color: white; font-size: 15px; font-weight: 700;
-    padding: 15px 48px; border: none; border-radius: 10px; cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 6px 24px rgba(45,90,27,0.35);
-    font-family: 'DM Sans', sans-serif;
-  }
-  .form-submit button:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(45,90,27,0.4); }
-  .form-submit button:disabled {
-    opacity: 0.6; cursor: not-allowed; transform: none;
-  }
-
-  /* ── SERVICES PAGE ── */
-  .page-hero {
-    background: linear-gradient(135deg, var(--dark) 0%, #162b0c 100%);
-    padding: 140px 2rem 80px;
-    text-align: center;
-  }
-  .page-hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900;
-    color: var(--white); margin-bottom: 1rem;
-  }
-  .page-hero h1 em { color: var(--gold); font-style: normal; }
-  .page-hero p { color: rgba(255,255,255,0.65); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
-
-  .services-grid {
-    max-width: 1200px; margin: 0 auto;
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 28px;
-  }
-  .service-card {
-    background: var(--white); border-radius: 16px; overflow: hidden;
-    box-shadow: 0 4px 20px rgba(26,18,8,0.08);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(26,18,8,0.14); }
-  .svc-img { width: 100%; height: 200px; object-fit: cover; }
-  .svc-body { padding: 24px; }
-  .svc-icon {
-    width: 48px; height: 48px; border-radius: 10px;
-    background: linear-gradient(135deg, var(--green), var(--green-light));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px; margin-bottom: 14px;
-    box-shadow: 0 4px 12px rgba(45,90,27,0.3);
-  }
-  .svc-title {
-    font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700;
-    color: var(--dark); margin-bottom: 8px;
-  }
-  .svc-desc { color: var(--text-light); font-size: 14px; line-height: 1.7; }
-  .svc-list { margin-top: 14px; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
-  .svc-list li { font-size: 13px; color: var(--text-light); display: flex; align-items: center; gap: 8px; }
-  .svc-list li::before { content: '✓'; color: var(--green-mid); font-weight: 700; }
-
-  /* ── ABOUT PAGE ── */
-  .about-full { max-width: 1200px; margin: 0 auto; }
-  .mission-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 3rem;
-  }
-  .mission-card {
-    background: var(--white); border-radius: 14px; padding: 28px;
-    box-shadow: 0 4px 20px rgba(26,18,8,0.08);
-    border-top: 3px solid var(--green-mid);
-    text-align: center;
-  }
-  .mission-emoji { font-size: 2.5rem; margin-bottom: 14px; display: block; }
-  .mission-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
-  .mission-text { font-size: 14px; color: var(--text-light); line-height: 1.7; }
-
-  .team-strip { background: var(--dark); padding: 80px 2rem; }
-  .team-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; }
-  .team-card {
-    background: rgba(255,255,255,0.05); border: 1px solid rgba(200,151,58,0.15);
-    border-radius: 14px; padding: 28px 20px; text-align: center;
-    transition: border-color 0.3s;
-  }
-  .team-card:hover { border-color: var(--gold); }
-  .team-avatar {
-    width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 14px;
-    background: linear-gradient(135deg, var(--gold), var(--green-mid));
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: white;
-  }
-  .team-name { font-weight: 600; color: var(--white); margin-bottom: 4px; }
-  .team-role { font-size: 12px; color: rgba(255,255,255,0.5); }
-
-  /* ── CONTACT PAGE ── */
-  .contact-grid {
-    max-width: 1200px; margin: 0 auto;
-    display: grid; grid-template-columns: 1fr 1.6fr; gap: 4rem; align-items: start;
-  }
-  .contact-info h3 {
-    font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700;
-    color: var(--dark); margin-bottom: 1.5rem;
-  }
-  .contact-items { display: flex; flex-direction: column; gap: 20px; }
-  .contact-item { display: flex; align-items: flex-start; gap: 14px; }
-  .ci-icon {
-    width: 44px; height: 44px; min-width: 44px;
-    background: linear-gradient(135deg, var(--green), var(--green-light));
-    border-radius: 10px; display: flex; align-items: center; justify-content: center;
-    font-size: 18px; box-shadow: 0 4px 12px rgba(45,90,27,0.3);
-  }
-  .ci-label { font-size: 11px; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; }
-  .ci-val { font-size: 15px; color: var(--dark); font-weight: 500; margin-top: 2px; }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--deep); color: rgba(255,255,255,0.6);
-    padding: 60px 2rem 30px;
-  }
-  .footer-inner {
-    max-width: 1200px; margin: 0 auto;
-    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
-    padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.08);
-    margin-bottom: 24px;
-  }
-  .footer-brand .logo-name { font-size: 20px; }
-  .footer-brand p { font-size: 13px; line-height: 1.7; margin-top: 12px; color: rgba(255,255,255,0.4); }
-  .footer-col h4 { color: var(--gold); font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px; }
-  .footer-col a { display: block; color: rgba(255,255,255,0.5); font-size: 13px; text-decoration: none; margin-bottom: 8px; transition: color 0.2s; }
-  .footer-col a:hover { color: var(--gold); }
-  .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-  .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.3); }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeInRight {
-    from { opacity: 0; transform: translateX(30px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-
-  /* ── BANNER SLIDER ── */
-  .banner-slider { position: relative; overflow: hidden; height: 100vh; min-height: 600px; }
-  .slide {
-    position: absolute; inset: 0; opacity: 0; transition: opacity 0.8s ease;
-    display: flex; align-items: center;
-  }
-  .slide.active-slide { opacity: 1; }
-  .slide-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
-  .slide-overlay { position: absolute; inset: 0; background: linear-gradient(120deg, rgba(15,11,5,0.85) 0%, rgba(15,11,5,0.4) 100%); }
-  .slide-content {
-    position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 0 2rem 0;
-    padding-top: 72px;
-  }
-  .slide-content .hero-badge { animation: none; }
-  .slide-content h1 { animation: none; }
-  .slide-content p { animation: none; }
-  .slide-content .hero-buttons { animation: none; }
-
-  .slider-dots {
-    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
-    display: flex; gap: 8px; z-index: 10;
-  }
-  .s-dot {
-    width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.35);
-    cursor: pointer; transition: all 0.3s; border: none;
-  }
-  .s-dot.active { background: var(--gold); width: 24px; border-radius: 4px; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    .hero-content { grid-template-columns: 1fr; }
-    .hero-right { display: none; }
-    .about-inner { grid-template-columns: 1fr; }
-    .footer-inner { grid-template-columns: 1fr 1fr; }
-    .contact-grid { grid-template-columns: 1fr; }
-    .mission-grid { grid-template-columns: 1fr; }
-    .form-grid { grid-template-columns: 1fr; }
-  }
-
-  @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .hamburger { display: flex; }
-    nav .nav-cta { display: none; }
-    .footer-inner { grid-template-columns: 1fr; }
-
-    .mobile-menu {
-      position: fixed; inset: 0; top: 72px; background: rgba(15,11,5,0.98);
-      z-index: 999; padding: 2rem; display: flex; flex-direction: column; gap: 0;
-      transform: translateX(100%); transition: transform 0.3s;
-    }
-    .mobile-menu.open { transform: translateX(0); }
-    .mobile-menu a {
-      color: rgba(255,255,255,0.8); text-decoration: none; font-size: 18px;
-      padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
-      font-weight: 500;
-    }
-    .mobile-menu a:hover { color: var(--gold); }
-  }
-
-  .toast {
-    position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(100px);
-    padding: 14px 28px;
-    border-radius: 10px; font-weight: 600; font-size: 14px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3); z-index: 9999;
-    transition: transform 0.4s;
-    color: white;
-  }
-  .toast.toast-success { background: var(--green); }
-  .toast.toast-error { background: #c0392b; }
-  .toast.show { transform: translateX(-50%) translateY(0); }
-
-  .certifications {
-    background: var(--cream); padding: 40px 2rem;
-    border-top: 1px solid rgba(200,151,58,0.15);
-  }
-  .cert-row { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap; }
-  .cert-badge {
-    display: flex; align-items: center; gap: 8px;
-    font-size: 13px; font-weight: 600; color: var(--text-light);
-  }
-  .cert-badge span { font-size: 1.4rem; }
-
-  .field-error { border-color: #c0392b !important; }
-  .error-msg { color: #c0392b; font-size: 11px; margin-top: 2px; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manjusha Enterprises - Global Agro Exports</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/products.css">
+  <link rel="stylesheet" href="css/services.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav>
   <a class="logo-wrap" href="#" onclick="showPage('home')">
     <div class="logo-icon">ME</div>
@@ -648,14 +28,13 @@
       <span class="logo-tagline">Global Agro Exports</span>
     </div>
   </a>
-
   <ul class="nav-links">
     <li><a href="#" onclick="showPage('home')" class="active" id="nav-home">Home</a></li>
     <li class="has-dropdown">
-      <a href="#" onclick="showPage('services')" id="nav-services">Services ▾</a>
+      <a href="#" onclick="showPage('services')" id="nav-services">Services &#9662;</a>
       <div class="dropdown">
-        <a href="#" onclick="showPage('services'); scrollToSection('export-services')">🌍 Export Services</a>
-        <a href="#" onclick="showPage('services'); scrollToSection('import-services')">📦 Import Services</a>
+        <a href="#" onclick="showPage('services'); scrollToSection('export-services')">Export Services</a>
+        <a href="#" onclick="showPage('services'); scrollToSection('import-services')">Import Services</a>
       </div>
     </li>
     <li><a href="#" onclick="showPage('products')" id="nav-products">Products</a></li>
@@ -663,41 +42,29 @@
     <li><a href="#" onclick="showPage('contact')" id="nav-contact">Contact Us</a></li>
     <li><a href="#" onclick="showPage('contact')" class="nav-cta">Get Quote</a></li>
   </ul>
-
-  <div class="hamburger" onclick="toggleMobile()">
-    <span></span><span></span><span></span>
-  </div>
+  <div class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
 </nav>
 
-<!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#" onclick="showPage('home'); toggleMobile()">🏠 Home</a>
-  <a href="#" onclick="showPage('services'); toggleMobile()">⚙️ Services</a>
-  <a href="#" onclick="showPage('products'); toggleMobile()">📦 Products</a>
-  <a href="#" onclick="showPage('about'); toggleMobile()">ℹ️ About Us</a>
-  <a href="#" onclick="showPage('contact'); toggleMobile()">✉️ Contact Us</a>
+  <a href="#" onclick="showPage('home'); toggleMobile()">Home</a>
+  <a href="#" onclick="showPage('services'); toggleMobile()">Services</a>
+  <a href="#" onclick="showPage('products'); toggleMobile()">Products</a>
+  <a href="#" onclick="showPage('about'); toggleMobile()">About Us</a>
+  <a href="#" onclick="showPage('contact'); toggleMobile()">Contact Us</a>
 </div>
 
-<!-- ════════════════════════════════════════
-     HOME PAGE
-════════════════════════════════════════ -->
+<!-- HOME PAGE -->
 <div class="page active" id="page-home">
-
-  <!-- HERO BANNER SLIDER -->
-  <div class="banner-slider" style="margin-top:0;">
+  <div class="banner-slider">
     <div class="slide active-slide">
       <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=1800&q=80')"></div>
       <div class="slide-overlay"></div>
-      <div class="slide-content" style="padding-top:100px; width:100%;">
-        <div class="hero-badge">Trusted Since 2010 · India's Premium Exporter</div>
-        <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4.2rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:1.2rem;max-width:620px;">
-          From India's <em style="color:var(--gold)">Fertile Fields</em> to the World's Tables
-        </h1>
-        <p style="color:rgba(255,255,255,0.75);font-size:1.05rem;max-width:480px;line-height:1.8;margin-bottom:1.8rem;">
-          Premium quality agro-products — Moringa, Makhana, Spices, and more — exported to 30+ countries with world-class standards.
-        </p>
-        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-          <a href="#" onclick="showPage('products')" class="btn-primary">🌿 Explore Products</a>
+      <div class="slide-content">
+        <div class="hero-badge">Trusted Since 2010</div>
+        <h1>From India's <em>Fertile Fields</em> to the World's Tables</h1>
+        <p>Premium quality agro-products exported to 30+ countries with world-class standards.</p>
+        <div class="hero-buttons">
+          <a href="#" onclick="showPage('products')" class="btn-primary">Explore Products</a>
           <a href="#" onclick="showPage('contact')" class="btn-outline">Get a Quote</a>
         </div>
       </div>
@@ -705,16 +72,12 @@
     <div class="slide">
       <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=1800&q=80')"></div>
       <div class="slide-overlay"></div>
-      <div class="slide-content" style="padding-top:100px; width:100%;">
-        <div class="hero-badge">100% Natural · Certified Organic</div>
-        <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4.2rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:1.2rem;max-width:620px;">
-          Pure <em style="color:var(--gold)">Indian Spices</em> & Dehydrated Superfoods
-        </h1>
-        <p style="color:rgba(255,255,255,0.75);font-size:1.05rem;max-width:480px;line-height:1.8;margin-bottom:1.8rem;">
-          From turmeric powder to moringa leaves — sourced directly from verified farms across India.
-        </p>
-        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-          <a href="#" onclick="showPage('products')" class="btn-primary">🌶 View Spices</a>
+      <div class="slide-content">
+        <div class="hero-badge">100% Natural</div>
+        <h1>Pure <em>Indian Spices</em> &amp; Dehydrated Superfoods</h1>
+        <p>From turmeric powder to moringa leaves - sourced directly from verified farms across India.</p>
+        <div class="hero-buttons">
+          <a href="#" onclick="showPage('products')" class="btn-primary">View Spices</a>
           <a href="#" onclick="showPage('about')" class="btn-outline">Our Story</a>
         </div>
       </div>
@@ -722,16 +85,12 @@
     <div class="slide">
       <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1588964895597-cfccd6e2dbf9?w=1800&q=80')"></div>
       <div class="slide-overlay"></div>
-      <div class="slide-content" style="padding-top:100px; width:100%;">
-        <div class="hero-badge">Export · Import · Logistics</div>
-        <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4.2rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:1.2rem;max-width:620px;">
-          Your <em style="color:var(--gold)">Reliable Partner</em> in Global Trade
-        </h1>
-        <p style="color:rgba(255,255,255,0.75);font-size:1.05rem;max-width:480px;line-height:1.8;margin-bottom:1.8rem;">
-          End-to-end export-import services with full documentation, quality assurance, and on-time delivery guaranteed.
-        </p>
-        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-          <a href="#" onclick="showPage('services')" class="btn-primary">⚙️ Our Services</a>
+      <div class="slide-content">
+        <div class="hero-badge">Export - Import - Logistics</div>
+        <h1>Your <em>Reliable Partner</em> in Global Trade</h1>
+        <p>End-to-end export-import services with full documentation and on-time delivery guaranteed.</p>
+        <div class="hero-buttons">
+          <a href="#" onclick="showPage('services')" class="btn-primary">Our Services</a>
           <a href="#" onclick="showPage('contact')" class="btn-outline">Contact Us</a>
         </div>
       </div>
@@ -743,91 +102,54 @@
     </div>
   </div>
 
-  <!-- CERTIFICATIONS -->
   <div class="certifications">
     <div class="cert-row">
-      <div class="cert-badge"><span>🏅</span> APEDA Certified</div>
-      <div class="cert-badge"><span>🌿</span> FSSAI Approved</div>
-      <div class="cert-badge"><span>🇮🇳</span> Made in India</div>
-      <div class="cert-badge"><span>🌍</span> 30+ Countries Served</div>
-      <div class="cert-badge"><span>📦</span> 500+ MT Exported</div>
+      <div class="cert-badge"><span>&#127941;</span> APEDA Certified</div>
+      <div class="cert-badge"><span>&#127807;</span> FSSAI Approved</div>
+      <div class="cert-badge"><span>&#127470;&#127475;</span> Made in India</div>
+      <div class="cert-badge"><span>&#127758;</span> 30+ Countries Served</div>
+      <div class="cert-badge"><span>&#128230;</span> 500+ MT Exported</div>
     </div>
   </div>
 
-  <!-- ABOUT SNIPPET -->
   <div class="about-strip">
     <div class="about-inner">
       <div class="about-img-wrap">
-        <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=800&q=80" alt="Manjusha Enterprises warehouse">
-        <div class="about-badge-float">
-          <strong>15+</strong>
-          Years of<br>Excellence
-        </div>
+        <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=800&q=80" alt="Warehouse">
+        <div class="about-badge-float"><strong>15+</strong>Years of<br>Excellence</div>
       </div>
       <div class="about-text">
-        <span class="section-tag" style="color:var(--gold-light);">— About Manjusha Enterprises</span>
+        <span class="section-tag" style="color:var(--gold-light);">- About Manjusha Enterprises</span>
         <h2 class="section-title" style="color:#fff;">India's Trusted <em>Agro-Export</em> Partner</h2>
-        <p class="section-sub">
-          Founded in Pune, Maharashtra, Manjusha Enterprises has been bridging Indian farms with global markets for over 15 years. We specialize in premium quality dehydrated farm products, spices, and superfoods — delivered with integrity and excellence.
-        </p>
+        <p class="section-sub">Founded in Pune, Maharashtra, Manjusha Enterprises has been bridging Indian farms with global markets for over 15 years.</p>
         <div class="about-features">
-          <div class="feat-item">
-            <div class="feat-icon">🌾</div>
-            <div>
-              <div class="feat-title">Farm-to-Export Quality Control</div>
-              <div class="feat-desc">Direct sourcing from verified farms. Multi-stage quality checks at every step.</div>
-            </div>
-          </div>
-          <div class="feat-item">
-            <div class="feat-icon">📜</div>
-            <div>
-              <div class="feat-title">Full Compliance & Documentation</div>
-              <div class="feat-desc">APEDA, FSSAI, Phytosanitary, and all international trade certifications handled.</div>
-            </div>
-          </div>
-          <div class="feat-item">
-            <div class="feat-icon">🚢</div>
-            <div>
-              <div class="feat-title">On-Time Global Delivery</div>
-              <div class="feat-desc">Air, sea, and road freight solutions tailored to your requirement.</div>
-            </div>
-          </div>
+          <div class="feat-item"><div class="feat-icon">&#127806;</div><div><div class="feat-title">Farm-to-Export Quality Control</div><div class="feat-desc">Direct sourcing from verified farms.</div></div></div>
+          <div class="feat-item"><div class="feat-icon">&#128220;</div><div><div class="feat-title">Full Compliance &amp; Documentation</div><div class="feat-desc">APEDA, FSSAI, Phytosanitary certifications.</div></div></div>
+          <div class="feat-item"><div class="feat-icon">&#128674;</div><div><div class="feat-title">On-Time Global Delivery</div><div class="feat-desc">Air, sea, and road freight solutions.</div></div></div>
         </div>
-        <div style="margin-top:2rem;">
-          <a href="#" onclick="showPage('about')" class="btn-primary" style="display:inline-flex;">Read Our Story →</a>
-        </div>
+        <div style="margin-top:2rem;"><a href="#" onclick="showPage('about')" class="btn-primary" style="display:inline-flex;">Read Our Story</a></div>
       </div>
     </div>
   </div>
 
-  <!-- FEATURED PRODUCTS -->
   <section class="products-section">
     <div class="container">
-      <span class="section-tag">— Our Products</span>
+      <span class="section-tag">- Our Products</span>
       <h2 class="section-title">Premium <em>Export Products</em></h2>
-      <p class="section-sub">Handpicked from India's finest farms — pure, natural, and packed to international standards.</p>
-
+      <p class="section-sub">Handpicked from India's finest farms.</p>
       <div class="products-grid" id="home-products"></div>
-
-      <div class="view-all-wrap">
-        <a href="#" onclick="showPage('products')" class="btn-primary" style="font-size:15px; padding:14px 40px;">
-          🌿 View All Products
-        </a>
-      </div>
+      <div class="view-all-wrap"><a href="#" onclick="showPage('products')" class="btn-primary">View All Products</a></div>
     </div>
   </section>
 
-  <!-- WORLD MAP -->
   <section class="world-section">
     <div class="container">
-      <span class="section-tag" style="color:var(--gold-light); justify-content:center;">— Global Reach</span>
+      <span class="section-tag" style="color:var(--gold-light); justify-content:center;">- Global Reach</span>
       <h2 class="section-title" style="color:#fff; text-align:center;">Serving <em style="color:var(--gold)">the World</em></h2>
-      <p class="section-sub" style="text-align:center;">We have successfully delivered premium Indian agro-products to over 30 countries across 5 continents.</p>
-
+      <p class="section-sub" style="text-align:center;">Delivered to over 30 countries across 5 continents.</p>
       <div class="map-container">
         <svg class="world-svg" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
           <rect width="1000" height="500" fill="rgba(45,90,27,0.1)" rx="12"/>
-          <rect width="1000" height="500" fill="url(#ocean)" rx="12" opacity="0.3"/>
           <path d="M 95 80 L 200 70 L 230 100 L 240 160 L 200 200 L 180 240 L 150 250 L 130 220 L 100 180 L 80 140 Z" fill="rgba(45,90,27,0.55)" stroke="rgba(200,151,58,0.3)" stroke-width="1"/>
           <path d="M 185 260 L 230 250 L 250 300 L 240 370 L 210 420 L 185 400 L 165 350 L 170 290 Z" fill="rgba(45,90,27,0.55)" stroke="rgba(200,151,58,0.3)" stroke-width="1"/>
           <path d="M 450 60 L 510 55 L 530 80 L 520 110 L 490 120 L 460 115 L 440 90 Z" fill="rgba(45,90,27,0.55)" stroke="rgba(200,151,58,0.3)" stroke-width="1"/>
@@ -835,74 +157,43 @@
           <path d="M 530 55 L 700 50 L 760 80 L 780 120 L 750 160 L 700 170 L 660 190 L 620 180 L 580 160 L 550 140 L 530 110 Z" fill="rgba(45,90,27,0.55)" stroke="rgba(200,151,58,0.3)" stroke-width="1"/>
           <path d="M 625 155 L 655 150 L 670 175 L 665 220 L 645 250 L 625 235 L 615 205 L 615 175 Z" fill="rgba(200,151,58,0.5)" stroke="rgba(200,151,58,0.8)" stroke-width="1.5"/>
           <path d="M 750 290 L 840 285 L 870 320 L 855 370 L 820 390 L 775 375 L 755 340 L 750 305 Z" fill="rgba(45,90,27,0.55)" stroke="rgba(200,151,58,0.3)" stroke-width="1"/>
-          <path d="M 550 140 L 600 135 L 615 155 L 610 185 L 575 180 L 555 165 Z" fill="rgba(45,90,27,0.5)" stroke="rgba(200,151,58,0.2)" stroke-width="1"/>
-          <path d="M 700 170 L 750 165 L 770 195 L 755 220 L 720 215 L 700 195 Z" fill="rgba(45,90,27,0.5)" stroke="rgba(200,151,58,0.2)" stroke-width="1"/>
-          <text x="640" y="210" fill="rgba(200,151,58,0.9)" font-size="9" font-family="DM Sans" font-weight="700" text-anchor="middle">India 🇮🇳</text>
-          <circle cx="640" cy="195" r="6" fill="var(--gold)" opacity="0.9">
-            <animate attributeName="r" values="5;9;5" dur="2s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
-          </circle>
-          <circle class="dot-pulse" cx="462" cy="82" r="5" fill="#E63946" opacity="0.9"><animate attributeName="r" values="4;7;4" dur="2.2s" repeatCount="indefinite"/></circle>
+          <text x="640" y="210" fill="rgba(200,151,58,0.9)" font-size="9" font-weight="700" text-anchor="middle">India</text>
+          <circle cx="640" cy="195" r="6" fill="var(--gold)" opacity="0.9"><animate attributeName="r" values="5;9;5" dur="2s" repeatCount="indefinite"/></circle>
+          <circle cx="462" cy="82" r="5" fill="#E63946" opacity="0.9"><animate attributeName="r" values="4;7;4" dur="2.2s" repeatCount="indefinite"/></circle>
           <text x="462" y="76" fill="rgba(255,255,255,0.7)" font-size="7" text-anchor="middle">UK</text>
           <circle cx="490" cy="80" r="4.5" fill="#E63946" opacity="0.9"><animate attributeName="r" values="4;6.5;4" dur="1.9s" repeatCount="indefinite"/></circle>
           <text x="490" y="74" fill="rgba(255,255,255,0.7)" font-size="7" text-anchor="middle">DE</text>
-          <circle cx="466" cy="94" r="4" fill="#E63946" opacity="0.9"><animate attributeName="r" values="3.5;6;3.5" dur="2.5s" repeatCount="indefinite"/></circle>
           <circle cx="155" cy="140" r="5" fill="#E63946" opacity="0.9"><animate attributeName="r" values="4;7;4" dur="2.1s" repeatCount="indefinite"/></circle>
           <text x="155" y="134" fill="rgba(255,255,255,0.7)" font-size="7" text-anchor="middle">USA</text>
-          <circle cx="150" cy="110" r="4" fill="#E63946" opacity="0.9"><animate attributeName="r" values="3.5;6;3.5" dur="2.4s" repeatCount="indefinite"/></circle>
           <circle cx="810" cy="335" r="5" fill="#E63946" opacity="0.9"><animate attributeName="r" values="4;7;4" dur="2.3s" repeatCount="indefinite"/></circle>
           <text x="810" y="329" fill="rgba(255,255,255,0.7)" font-size="7" text-anchor="middle">AUS</text>
           <circle cx="577" cy="158" r="5" fill="#E63946" opacity="0.9"><animate attributeName="r" values="4;7;4" dur="1.8s" repeatCount="indefinite"/></circle>
           <text x="577" y="152" fill="rgba(255,255,255,0.7)" font-size="7" text-anchor="middle">UAE</text>
-          <circle cx="560" cy="167" r="4" fill="#E63946" opacity="0.9"><animate attributeName="r" values="3.5;6;3.5" dur="2.6s" repeatCount="indefinite"/></circle>
           <circle cx="762" cy="113" r="4.5" fill="#E63946" opacity="0.9"><animate attributeName="r" values="4;6.5;4" dur="2.0s" repeatCount="indefinite"/></circle>
           <text x="762" y="107" fill="rgba(255,255,255,0.7)" font-size="7" text-anchor="middle">JP</text>
           <circle cx="726" cy="205" r="4" fill="#E63946" opacity="0.9"><animate attributeName="r" values="3.5;6;3.5" dur="2.2s" repeatCount="indefinite"/></circle>
           <text x="726" y="199" fill="rgba(255,255,255,0.7)" font-size="7" text-anchor="middle">SG</text>
-          <circle cx="488" cy="355" r="4.5" fill="#E63946" opacity="0.9"><animate attributeName="r" values="4;6.5;4" dur="2.4s" repeatCount="indefinite"/></circle>
-          <text x="488" y="349" fill="rgba(255,255,255,0.7)" font-size="7" text-anchor="middle">ZA</text>
-          <circle cx="475" cy="76" r="4" fill="#E63946" opacity="0.9"><animate attributeName="r" values="3.5;6;3.5" dur="1.7s" repeatCount="indefinite"/></circle>
           <circle cx="215" cy="320" r="4.5" fill="#E63946" opacity="0.9"><animate attributeName="r" values="4;6.5;4" dur="2.8s" repeatCount="indefinite"/></circle>
           <text x="215" y="314" fill="rgba(255,255,255,0.7)" font-size="7" text-anchor="middle">BR</text>
-          <circle cx="720" cy="145" r="4" fill="#E63946" opacity="0.9"><animate attributeName="r" values="3.5;6;3.5" dur="2.1s" repeatCount="indefinite"/></circle>
-          <text x="720" y="139" fill="rgba(255,255,255,0.7)" font-size="7" text-anchor="middle">CN</text>
-          <circle cx="520" cy="260" r="4" fill="#E63946" opacity="0.9"><animate attributeName="r" values="3.5;6;3.5" dur="2.0s" repeatCount="indefinite"/></circle>
-          <text x="520" y="254" fill="rgba(255,255,255,0.7)" font-size="7" text-anchor="middle">KE</text>
-          <circle cx="30" cy="470" r="5" fill="var(--gold)"/>
-          <text x="40" y="474" fill="rgba(255,255,255,0.6)" font-size="9">Origin (India)</text>
-          <circle cx="130" cy="470" r="5" fill="#E63946"/>
-          <text x="140" y="474" fill="rgba(255,255,255,0.6)" font-size="9">Delivery Countries</text>
         </svg>
       </div>
-
       <div class="country-tags">
-        <span class="c-tag">🇬🇧 United Kingdom</span>
-        <span class="c-tag">🇩🇪 Germany</span>
-        <span class="c-tag">🇫🇷 France</span>
-        <span class="c-tag">🇺🇸 USA</span>
-        <span class="c-tag">🇨🇦 Canada</span>
-        <span class="c-tag">🇦🇺 Australia</span>
-        <span class="c-tag">🇦🇪 UAE</span>
-        <span class="c-tag">🇸🇦 Saudi Arabia</span>
-        <span class="c-tag">🇯🇵 Japan</span>
-        <span class="c-tag">🇸🇬 Singapore</span>
-        <span class="c-tag">🇿🇦 South Africa</span>
-        <span class="c-tag">🇳🇱 Netherlands</span>
-        <span class="c-tag">🇧🇷 Brazil</span>
-        <span class="c-tag">🇨🇳 China</span>
-        <span class="c-tag">🇰🇪 Kenya</span>
+        <span class="c-tag">UK</span><span class="c-tag">Germany</span><span class="c-tag">France</span>
+        <span class="c-tag">USA</span><span class="c-tag">Canada</span><span class="c-tag">Australia</span>
+        <span class="c-tag">UAE</span><span class="c-tag">Saudi Arabia</span><span class="c-tag">Japan</span>
+        <span class="c-tag">Singapore</span><span class="c-tag">South Africa</span><span class="c-tag">Netherlands</span>
+        <span class="c-tag">Brazil</span><span class="c-tag">China</span><span class="c-tag">Kenya</span>
         <span class="c-tag">+ 15 more</span>
       </div>
     </div>
   </section>
 
-  <!-- QUERY FORM (HOME) -->
   <section class="query-section">
     <div class="container">
       <div style="text-align:center; margin-bottom:3rem;">
-        <span class="section-tag" style="justify-content:center;">— Send Enquiry</span>
+        <span class="section-tag" style="justify-content:center;">- Send Enquiry</span>
         <h2 class="section-title">Submit Your <em>Requirement</em></h2>
-        <p class="section-sub" style="margin:0 auto;">Tell us what you need and we'll get back to you within 24 hours with the best pricing and availability.</p>
+        <p class="section-sub" style="margin:0 auto;">Tell us what you need and we'll get back within 24 hours.</p>
       </div>
       <div class="form-wrapper" id="homeFormWrapper">
         <div class="form-grid">
@@ -912,291 +203,108 @@
           <div class="form-group"><label>Phone / WhatsApp</label><input type="tel" name="phone" placeholder="+1 234 567 8900"></div>
           <div class="form-group"><label>Country</label><input type="text" name="country" placeholder="Your country"></div>
           <div class="form-group"><label>Product Interested In</label>
-            <select name="product">
-              <option value="">Select a product</option>
-              <option>Moringa Powder</option>
-              <option>Makhana (Fox Nuts)</option>
-              <option>Turmeric Powder</option>
-              <option>Chilli Powder</option>
-              <option>Banana Powder</option>
-              <option>Indian Spices Blend</option>
-              <option>Onion Powder</option>
-              <option>Dehydrated Farm Items</option>
-              <option>Multiple Products</option>
-            </select>
+            <select name="product"><option value="">Select a product</option><option>Moringa Powder</option><option>Makhana (Fox Nuts)</option><option>Turmeric Powder</option><option>Chilli Powder</option><option>Banana Powder</option><option>Indian Spices Blend</option><option>Onion Powder</option><option>Dehydrated Farm Items</option><option>Multiple Products</option></select>
           </div>
           <div class="form-group full"><label>Quantity Required</label><input type="text" name="quantity" placeholder="e.g. 5 MT per month"></div>
-          <div class="form-group full"><label>Message / Detailed Requirement</label>
-            <textarea name="message" placeholder="Please describe your requirement in detail — quality specifications, packaging preference, delivery timeline, etc."></textarea>
-          </div>
+          <div class="form-group full"><label>Message</label><textarea name="message" placeholder="Quality specs, packaging, delivery timeline..."></textarea></div>
         </div>
-        <div class="form-submit">
-          <button onclick="submitForm('homeFormWrapper')">📧 Submit Requirement</button>
-        </div>
+        <div class="form-submit"><button onclick="submitForm('homeFormWrapper')">Submit Requirement</button></div>
       </div>
     </div>
   </section>
+</div>
 
-</div><!-- end home page -->
-
-<!-- ════════════════════════════════════════
-     SERVICES PAGE
-════════════════════════════════════════ -->
+<!-- SERVICES PAGE -->
 <div class="page" id="page-services">
   <div class="page-hero">
-    <span class="section-tag" style="color:var(--gold-light); justify-content:center; margin-bottom:1rem;">— What We Offer</span>
     <h1>Our <em>Services</em></h1>
-    <p>Comprehensive export-import solutions, from sourcing to doorstep delivery — with full documentation support.</p>
+    <p>Comprehensive export-import solutions, from sourcing to doorstep delivery.</p>
   </div>
-
   <section style="background:var(--cream2); padding:80px 2rem;" id="export-services">
     <div class="container">
-      <span class="section-tag">— Export Services</span>
+      <span class="section-tag">- Export Services</span>
       <h2 class="section-title">World-Class <em>Export Solutions</em></h2>
-      <p class="section-sub">We manage every step of your export journey — from farm procurement to custom clearance at the destination port.</p>
+      <p class="section-sub">From farm procurement to custom clearance at the destination port.</p>
       <div class="services-grid">
-        <div class="service-card">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=700&q=80" alt="Quality Control">
-          <div class="svc-body">
-            <div class="svc-icon">🔬</div>
-            <div class="svc-title">Quality Assurance & Testing</div>
-            <div class="svc-desc">Rigorous lab testing, moisture analysis, and visual inspection at every stage of production and packing.</div>
-            <ul class="svc-list">
-              <li>FSSAI & international food safety compliance</li>
-              <li>Third-party lab testing available</li>
-              <li>Certificate of Analysis with every shipment</li>
-            </ul>
-          </div>
-        </div>
-        <div class="service-card">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=700&q=80" alt="Packaging">
-          <div class="svc-body">
-            <div class="svc-icon">📦</div>
-            <div class="svc-title">Custom Packaging & Branding</div>
-            <div class="svc-desc">OEM packaging solutions — your brand, your label, export-grade packaging that meets international standards.</div>
-            <ul class="svc-list">
-              <li>Vacuum, kraft, and food-grade packaging</li>
-              <li>White-label / private label options</li>
-              <li>Custom sizes: 100g to 25kg bags</li>
-              <li>Eco-friendly packaging available</li>
-            </ul>
-          </div>
-        </div>
-        <div class="service-card">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=700&q=80" alt="Logistics">
-          <div class="svc-body">
-            <div class="svc-icon">🚢</div>
-            <div class="svc-title">Freight & Logistics</div>
-            <div class="svc-desc">Flexible shipping modes — sea, air, and multimodal — with real-time tracking and end-to-end coordination.</div>
-            <ul class="svc-list">
-              <li>FCL & LCL container options</li>
-              <li>Air freight for urgent shipments</li>
-              <li>Reefer containers for sensitive products</li>
-              <li>Door-to-port and door-to-door available</li>
-            </ul>
-          </div>
-        </div>
-        <div class="service-card">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=700&q=80" alt="Documentation">
-          <div class="svc-body">
-            <div class="svc-icon">📋</div>
-            <div class="svc-title">Documentation & Compliance</div>
-            <div class="svc-desc">Complete handling of export documentation — APEDA registration, phytosanitary certificates, invoices, and more.</div>
-            <ul class="svc-list">
-              <li>Phytosanitary & fumigation certificates</li>
-              <li>Certificate of Origin (COO)</li>
-              <li>APEDA & DGFT compliance</li>
-              <li>Letter of Credit (LC) support</li>
-            </ul>
-          </div>
-        </div>
+        <div class="service-card"><img class="svc-img" src="https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=700&q=80" alt="QA"><div class="svc-body"><div class="svc-icon">&#128300;</div><div class="svc-title">Quality Assurance &amp; Testing</div><div class="svc-desc">Rigorous lab testing, moisture analysis, and visual inspection.</div><ul class="svc-list"><li>FSSAI &amp; international compliance</li><li>Third-party lab testing</li><li>Certificate of Analysis</li></ul></div></div>
+        <div class="service-card"><img class="svc-img" src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=700&q=80" alt="Packaging"><div class="svc-body"><div class="svc-icon">&#128230;</div><div class="svc-title">Custom Packaging &amp; Branding</div><div class="svc-desc">OEM packaging solutions - your brand, your label.</div><ul class="svc-list"><li>Vacuum, kraft, food-grade packaging</li><li>White-label / private label</li><li>100g to 25kg bags</li><li>Eco-friendly options</li></ul></div></div>
+        <div class="service-card"><img class="svc-img" src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=700&q=80" alt="Logistics"><div class="svc-body"><div class="svc-icon">&#128674;</div><div class="svc-title">Freight &amp; Logistics</div><div class="svc-desc">Sea, air, and multimodal shipping with real-time tracking.</div><ul class="svc-list"><li>FCL &amp; LCL containers</li><li>Air freight for urgent shipments</li><li>Reefer containers</li><li>Door-to-door delivery</li></ul></div></div>
+        <div class="service-card"><img class="svc-img" src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=700&q=80" alt="Docs"><div class="svc-body"><div class="svc-icon">&#128203;</div><div class="svc-title">Documentation &amp; Compliance</div><div class="svc-desc">Complete export documentation handling.</div><ul class="svc-list"><li>Phytosanitary certificates</li><li>Certificate of Origin</li><li>APEDA &amp; DGFT compliance</li><li>Letter of Credit support</li></ul></div></div>
       </div>
     </div>
   </section>
-
   <section style="background:var(--cream); padding:80px 2rem;" id="import-services">
     <div class="container">
-      <span class="section-tag">— Import Services</span>
+      <span class="section-tag">- Import Services</span>
       <h2 class="section-title">Seamless <em>Import Solutions</em></h2>
-      <p class="section-sub">We help businesses import agricultural products into India with full customs clearance and regulatory compliance.</p>
+      <p class="section-sub">Import agricultural products into India with full compliance.</p>
       <div class="services-grid">
-        <div class="service-card">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=700&q=80" alt="Sourcing">
-          <div class="svc-body">
-            <div class="svc-icon">🌐</div>
-            <div class="svc-title">Global Sourcing</div>
-            <div class="svc-desc">We identify and connect you with reliable overseas suppliers for specialty agro-commodities not easily available in India.</div>
-            <ul class="svc-list">
-              <li>Supplier verification & due diligence</li>
-              <li>Price negotiation support</li>
-              <li>Sample procurement before bulk orders</li>
-            </ul>
-          </div>
-        </div>
-        <div class="service-card">
-          <img class="svc-img" src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=700&q=80" alt="Customs">
-          <div class="svc-body">
-            <div class="svc-icon">🛃</div>
-            <div class="svc-title">Customs Clearance</div>
-            <div class="svc-desc">Complete import customs clearance at all major Indian ports — JNPT, Chennai, Mundra, and more.</div>
-            <ul class="svc-list">
-              <li>HS code classification support</li>
-              <li>Duty drawback & exemption advisory</li>
-              <li>FSSAI import clearance for food items</li>
-            </ul>
-          </div>
-        </div>
+        <div class="service-card"><img class="svc-img" src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=700&q=80" alt="Sourcing"><div class="svc-body"><div class="svc-icon">&#127760;</div><div class="svc-title">Global Sourcing</div><div class="svc-desc">Connect with reliable overseas suppliers.</div><ul class="svc-list"><li>Supplier verification</li><li>Price negotiation</li><li>Sample procurement</li></ul></div></div>
+        <div class="service-card"><img class="svc-img" src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=700&q=80" alt="Customs"><div class="svc-body"><div class="svc-icon">&#128707;</div><div class="svc-title">Customs Clearance</div><div class="svc-desc">Import clearance at JNPT, Chennai, Mundra, and more.</div><ul class="svc-list"><li>HS code classification</li><li>Duty drawback advisory</li><li>FSSAI import clearance</li></ul></div></div>
       </div>
     </div>
   </section>
 </div>
 
-<!-- ════════════════════════════════════════
-     PRODUCTS PAGE
-════════════════════════════════════════ -->
+<!-- PRODUCTS PAGE -->
 <div class="page" id="page-products">
-  <div class="page-hero">
-    <span class="section-tag" style="color:var(--gold-light); justify-content:center; margin-bottom:1rem;">— Our Range</span>
-    <h1>All <em>Products</em></h1>
-    <p>Premium quality dehydrated farm products, spices, and superfoods — sourced directly from India's finest farms.</p>
-  </div>
-  <section style="background:var(--cream2); padding:80px 2rem;">
-    <div class="container">
-      <div class="products-grid" id="all-products-grid"></div>
-    </div>
-  </section>
+  <div class="page-hero"><h1>All <em>Products</em></h1><p>Premium dehydrated farm products, spices, and superfoods.</p></div>
+  <section style="background:var(--cream2); padding:80px 2rem;"><div class="container"><div class="products-grid" id="all-products-grid"></div></div></section>
 </div>
 
-<!-- ════════════════════════════════════════
-     ABOUT PAGE
-════════════════════════════════════════ -->
+<!-- ABOUT PAGE -->
 <div class="page" id="page-about">
-  <div class="page-hero">
-    <span class="section-tag" style="color:var(--gold-light); justify-content:center; margin-bottom:1rem;">— Who We Are</span>
-    <h1>About <em>Us</em></h1>
-    <p>A Pune-based agro-export company with 15+ years of experience connecting India's farms to global markets.</p>
-  </div>
-
+  <div class="page-hero"><h1>About <em>Us</em></h1><p>Pune-based agro-export company with 15+ years of experience.</p></div>
   <section style="background:var(--cream2); padding:80px 2rem;">
     <div class="about-full">
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; margin-bottom:4rem;">
         <div>
-          <span class="section-tag">— Our Story</span>
-          <h2 class="section-title">Built on <em>Trust & Quality</em></h2>
-          <p style="color:var(--text-light); line-height:1.9; margin-bottom:1rem;">Manjusha Enterprises was founded in 2010 in Pune, Maharashtra with a simple mission — to bring the finest Indian agricultural products to the world with integrity and transparency.</p>
-          <p style="color:var(--text-light); line-height:1.9; margin-bottom:1rem;">Over the past 15+ years, we've built deep relationships with farmers across Maharashtra, Rajasthan, Bihar, and other states — ensuring our products are always fresh, authentic, and of the highest calibre.</p>
-          <p style="color:var(--text-light); line-height:1.9;">Today, Manjusha Enterprises proudly exports to 30+ countries, serving importers, distributors, health food brands, and retail chains around the world.</p>
+          <span class="section-tag">- Our Story</span>
+          <h2 class="section-title">Built on <em>Trust &amp; Quality</em></h2>
+          <p style="color:var(--text-light); line-height:1.9; margin-bottom:1rem;">Manjusha Enterprises was founded in 2010 in Pune with a simple mission - to bring the finest Indian agricultural products to the world.</p>
+          <p style="color:var(--text-light); line-height:1.9; margin-bottom:1rem;">Over 15+ years, we've built deep relationships with farmers across Maharashtra, Rajasthan, Bihar, and other states.</p>
+          <p style="color:var(--text-light); line-height:1.9;">Today we proudly export to 30+ countries worldwide.</p>
         </div>
-        <div>
-          <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&q=80" alt="About Manjusha" style="width:100%; height:380px; object-fit:cover; border-radius:16px; box-shadow:var(--shadow-deep);">
-        </div>
+        <div><img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&q=80" alt="About" style="width:100%; height:380px; object-fit:cover; border-radius:16px; box-shadow:var(--shadow-deep);"></div>
       </div>
-
       <div class="mission-grid">
-        <div class="mission-card">
-          <span class="mission-emoji">🎯</span>
-          <div class="mission-title">Our Mission</div>
-          <div class="mission-text">To connect India's agricultural wealth with the global market, delivering products that uphold the highest standards of quality, purity, and sustainability.</div>
-        </div>
-        <div class="mission-card">
-          <span class="mission-emoji">👁</span>
-          <div class="mission-title">Our Vision</div>
-          <div class="mission-text">To be India's most trusted agro-export brand, recognized globally for consistent quality and ethical sourcing practices.</div>
-        </div>
-        <div class="mission-card">
-          <span class="mission-emoji">💎</span>
-          <div class="mission-title">Our Values</div>
-          <div class="mission-text">Integrity in every transaction, transparency in operations, and commitment to the farmers and customers who trust us.</div>
-        </div>
+        <div class="mission-card"><span class="mission-emoji">&#127919;</span><div class="mission-title">Our Mission</div><div class="mission-text">Connect India's agricultural wealth with the global market.</div></div>
+        <div class="mission-card"><span class="mission-emoji">&#128065;</span><div class="mission-title">Our Vision</div><div class="mission-text">Be India's most trusted agro-export brand globally.</div></div>
+        <div class="mission-card"><span class="mission-emoji">&#128142;</span><div class="mission-title">Our Values</div><div class="mission-text">Integrity, transparency, and commitment to our partners.</div></div>
       </div>
     </div>
   </section>
-
   <div class="team-strip">
     <div style="max-width:1200px; margin:0 auto; padding:0 2rem;">
       <div style="text-align:center; margin-bottom:3rem;">
-        <span class="section-tag" style="color:var(--gold-light); justify-content:center;">— Our Team</span>
+        <span class="section-tag" style="color:var(--gold-light); justify-content:center;">- Our Team</span>
         <h2 class="section-title" style="color:#fff;">Meet the <em>People</em> Behind the Brand</h2>
       </div>
       <div class="team-grid">
-        <div class="team-card">
-          <div class="team-avatar">ME</div>
-          <div class="team-name">Mrs. Manjusha Kalekar</div>
-          <div class="team-role">Founder & Managing Director</div>
-        </div>
-        <div class="team-card">
-          <div class="team-avatar" style="background:linear-gradient(135deg,var(--green),var(--gold))">R</div>
-          <div class="team-name">Mr. Ramkrushna Kalekar</div>
-          <div class="team-role">Joint Managing Director</div>
-        </div>
-        <div class="team-card">
-          <div class="team-avatar" style="background:linear-gradient(135deg,#5A4A2A,var(--gold))">P</div>
-          <div class="team-name">Shrikant Kalekar</div>
-          <div class="team-role">Director</div>
-        </div>
-        <div class="team-card">
-          <div class="team-avatar" style="background:linear-gradient(135deg,var(--green-mid),var(--green-light))">A</div>
-          <div class="team-name">Ramakant Kalekar</div>
-          <div class="team-role">Director</div>
-        </div>
+        <div class="team-card"><div class="team-avatar">ME</div><div class="team-name">Mrs. Manjusha Kalekar</div><div class="team-role">Founder &amp; Managing Director</div></div>
+        <div class="team-card"><div class="team-avatar" style="background:linear-gradient(135deg,var(--green),var(--gold))">R</div><div class="team-name">Mr. Ramkrushna Kalekar</div><div class="team-role">Joint Managing Director</div></div>
+        <div class="team-card"><div class="team-avatar" style="background:linear-gradient(135deg,#5A4A2A,var(--gold))">P</div><div class="team-name">Shrikant Kalekar</div><div class="team-role">Director</div></div>
+        <div class="team-card"><div class="team-avatar" style="background:linear-gradient(135deg,var(--green-mid),var(--green-light))">A</div><div class="team-name">Ramakant Kalekar</div><div class="team-role">Director</div></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ════════════════════════════════════════
-     CONTACT PAGE
-════════════════════════════════════════ -->
+<!-- CONTACT PAGE -->
 <div class="page" id="page-contact">
-  <div class="page-hero">
-    <span class="section-tag" style="color:var(--gold-light); justify-content:center; margin-bottom:1rem;">— Get In Touch</span>
-    <h1>Contact <em>Us</em></h1>
-    <p>Have a query, need a quote, or want to discuss a bulk order? We'd love to hear from you.</p>
-  </div>
-
+  <div class="page-hero"><h1>Contact <em>Us</em></h1><p>Have a query, need a quote, or want to discuss a bulk order?</p></div>
   <section style="background:var(--cream2); padding:80px 2rem;">
     <div class="contact-grid">
       <div class="contact-info">
         <h3>Reach Out to <em style="color:var(--green-mid)">Manjusha Enterprises</em></h3>
         <div class="contact-items">
-          <div class="contact-item">
-            <div class="ci-icon">📍</div>
-            <div>
-              <div class="ci-label">Office Address</div>
-              <div class="ci-val">Manjusha Enterprises, Plot No. 11/6, G.No.880/1A, Golecha Sarvada, Wagholi, Pune – 412207, Maharashtra, India</div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="ci-icon">📞</div>
-            <div>
-              <div class="ci-label">Phone / WhatsApp</div>
-              <div class="ci-val">+91 8888815274</div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="ci-icon">✉️</div>
-            <div>
-              <div class="ci-label">Email</div>
-              <div class="ci-val">contact@manjushainternational.com</div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="ci-icon">🕐</div>
-            <div>
-              <div class="ci-label">Business Hours</div>
-              <div class="ci-val">Mon – Sat: 10:00 AM – 7:00 PM IST</div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="ci-icon">🌐</div>
-            <div>
-              <div class="ci-label">IEC Code</div>
-              <div class="ci-val">AAACM1234F · APEDA Registered</div>
-            </div>
-          </div>
+          <div class="contact-item"><div class="ci-icon">&#128205;</div><div><div class="ci-label">Office Address</div><div class="ci-val">Plot No. 11/6, G.No.880/1A, Golecha Sarvada, Wagholi, Pune - 412207, Maharashtra, India</div></div></div>
+          <div class="contact-item"><div class="ci-icon">&#128222;</div><div><div class="ci-label">Phone / WhatsApp</div><div class="ci-val">+91 8888815274</div></div></div>
+          <div class="contact-item"><div class="ci-icon">&#9993;</div><div><div class="ci-label">Email</div><div class="ci-val">contact@manjushainternational.com</div></div></div>
+          <div class="contact-item"><div class="ci-icon">&#128336;</div><div><div class="ci-label">Business Hours</div><div class="ci-val">Mon - Sat: 10:00 AM - 7:00 PM IST</div></div></div>
+          <div class="contact-item"><div class="ci-icon">&#127760;</div><div><div class="ci-label">IEC Code</div><div class="ci-val">AAACM1234F - APEDA Registered</div></div></div>
         </div>
       </div>
-
       <div id="contactFormWrapper">
         <h3 style="font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--dark); margin-bottom:1.5rem;">Send Us a <em style="color:var(--green-mid)">Message</em></h3>
         <div class="form-grid">
@@ -1206,26 +314,11 @@
           <div class="form-group"><label>WhatsApp / Phone</label><input type="tel" name="phone" placeholder="+1 234 567 8900"></div>
           <div class="form-group"><label>Country</label><input type="text" name="country" placeholder="Your country"></div>
           <div class="form-group"><label>Product of Interest</label>
-            <select name="product">
-              <option>Select product</option>
-              <option>Moringa Powder</option>
-              <option>Makhana (Fox Nuts)</option>
-              <option>Turmeric Powder</option>
-              <option>Chilli Powder</option>
-              <option>Banana Powder</option>
-              <option>Indian Spices</option>
-              <option>Onion Powder</option>
-              <option>Other / Multiple</option>
-            </select>
+            <select name="product"><option>Select product</option><option>Moringa Powder</option><option>Makhana (Fox Nuts)</option><option>Turmeric Powder</option><option>Chilli Powder</option><option>Banana Powder</option><option>Indian Spices</option><option>Onion Powder</option><option>Other / Multiple</option></select>
           </div>
-          <div class="form-group full">
-            <label>Your Message</label>
-            <textarea name="message" placeholder="How can we help you? Please include quantity, quality requirements, and any other details."></textarea>
-          </div>
+          <div class="form-group full"><label>Your Message</label><textarea name="message" placeholder="How can we help you?"></textarea></div>
         </div>
-        <div class="form-submit" style="text-align:left; margin-top:20px;">
-          <button onclick="submitForm('contactFormWrapper')">📩 Send Message</button>
-        </div>
+        <div class="form-submit" style="text-align:left; margin-top:20px;"><button onclick="submitForm('contactFormWrapper')">Send Message</button></div>
       </div>
     </div>
   </section>
@@ -1235,268 +328,23 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <div class="logo-wrap" style="margin-bottom:12px;">
-        <div class="logo-icon" style="width:44px;height:44px;font-size:18px;">ME</div>
-        <div class="logo-text">
-          <span class="logo-name">Manjusha Enterprises</span>
-          <span class="logo-tagline" style="color:rgba(255,255,255,0.3);">Global Agro Exports</span>
-        </div>
-      </div>
-      <p>Premium quality Indian agro-products exported to 30+ countries. Trusted by importers and distributors worldwide since 2010.</p>
-      <p style="margin-top:12px; color:rgba(255,255,255,0.3);">📍 Pune, Maharashtra, India</p>
+      <div class="logo-wrap" style="margin-bottom:12px;"><div class="logo-icon" style="width:44px;height:44px;font-size:18px;">ME</div><div class="logo-text"><span class="logo-name">Manjusha Enterprises</span><span class="logo-tagline" style="color:rgba(255,255,255,0.3);">Global Agro Exports</span></div></div>
+      <p>Premium Indian agro-products exported to 30+ countries since 2010.</p>
     </div>
-    <div class="footer-col">
-      <h4>Quick Links</h4>
-      <a href="#" onclick="showPage('home')">Home</a>
-      <a href="#" onclick="showPage('services')">Services</a>
-      <a href="#" onclick="showPage('products')">Products</a>
-      <a href="#" onclick="showPage('about')">About Us</a>
-      <a href="#" onclick="showPage('contact')">Contact</a>
-    </div>
-    <div class="footer-col">
-      <h4>Our Products</h4>
-      <a href="#" onclick="showPage('products')">Moringa Powder</a>
-      <a href="#" onclick="showPage('products')">Makhana</a>
-      <a href="#" onclick="showPage('products')">Turmeric Powder</a>
-      <a href="#" onclick="showPage('products')">Chilli Powder</a>
-      <a href="#" onclick="showPage('products')">Banana Powder</a>
-      <a href="#" onclick="showPage('products')">Onion Powder</a>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <a href="#">📞 +91 88888 15274</a>
-      <a href="#">✉️ contact@manjushainternational.com</a>
-      <a href="#">📍 Pune, Maharashtra</a>
-      <a href="#">🌐 IEC: AAACM1234F</a>
-    </div>
+    <div class="footer-col"><h4>Quick Links</h4><a href="#" onclick="showPage('home')">Home</a><a href="#" onclick="showPage('services')">Services</a><a href="#" onclick="showPage('products')">Products</a><a href="#" onclick="showPage('about')">About Us</a><a href="#" onclick="showPage('contact')">Contact</a></div>
+    <div class="footer-col"><h4>Products</h4><a href="#" onclick="showPage('products')">Moringa Powder</a><a href="#" onclick="showPage('products')">Makhana</a><a href="#" onclick="showPage('products')">Turmeric Powder</a><a href="#" onclick="showPage('products')">Chilli Powder</a><a href="#" onclick="showPage('products')">Banana Powder</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="#">+91 88888 15274</a><a href="#">contact@manjushainternational.com</a><a href="#">Pune, Maharashtra</a><a href="#">IEC: AAACM1234F</a></div>
   </div>
-  <div class="footer-bottom">
-    <p>© 2025 Manjusha Enterprises. All rights reserved.</p>
-    <p>APEDA Certified · FSSAI Approved</p>
-  </div>
+  <div class="footer-bottom"><p>&copy; 2025 Manjusha Enterprises. All rights reserved.</p><p>APEDA Certified - FSSAI Approved</p></div>
 </footer>
 
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
-
-<!-- ═══════════════════════════════════════════
-     EmailJS SDK — free tier: 200 emails/month
-     Setup: https://www.emailjs.com/
-═══════════════════════════════════════════ -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-<script>
-/* ═══════════════════════════════════════════════════════
-   ██  EMAIL CONFIGURATION — UPDATE THESE 3 VALUES  ██
-   ═══════════════════════════════════════════════════════
-   1. Go to https://www.emailjs.com and create a free account
-   2. Add an Email Service (Gmail, Outlook, etc.) → copy SERVICE ID
-   3. Create an Email Template with these variables:
-        {{from_name}}, {{from_email}}, {{company}},
-        {{phone}}, {{country}}, {{product}},
-        {{quantity}}, {{message}}, {{form_source}}
-   4. Copy your Template ID and Public Key below
-*/
-const EMAILJS_PUBLIC_KEY  = '8MlBxFTNbmP-Ws7Xf';    // e.g. 'aBcDeFgHiJkLm'
-const EMAILJS_SERVICE_ID  = 'service_th4qu0i';    // e.g. 'service_xyz123'
-const EMAILJS_TEMPLATE_ID = 'template_52djqps';   // e.g. 'template_abc456'
-
-
-
-
-
-// Initialize EmailJS
-emailjs.init(EMAILJS_PUBLIC_KEY);
-
-// ── PRODUCTS DATA ──
-const products = [
-  { name: "Moringa Powder", desc: "100% pure drumstick leaf powder — rich in antioxidants, vitamins & minerals. Cold-processed to retain nutrients.", tag: "Superfood", origin: "🇮🇳 Rajasthan, India", img: "https://images.unsplash.com/photo-1610348725531-843dff563e2c?w=600&q=80" },
-  { name: "Makhana (Fox Nuts)", desc: "Premium lotus seeds — naturally low in fat, high in protein. Widely used as a healthy snack and in cooking.", tag: "Superfood", origin: "🇮🇳 Bihar, India", img: "https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=600&q=80" },
-  { name: "Turmeric Powder", desc: "High-curcumin turmeric powder from Sangli farms. Vibrant colour, intense aroma, and superior purity.", tag: "Spice", origin: "🇮🇳 Sangli, Maharashtra", img: "https://images.unsplash.com/photo-1615485500704-8e990f9900f7?w=600&q=80" },
-  { name: "Red Chilli Powder", desc: "Kashmiri and Guntur variety red chillies — deep colour, balanced heat, and rich smoky flavour.", tag: "Spice", origin: "🇮🇳 Guntur, Andhra Pradesh", img: "https://images.unsplash.com/photo-1583119022894-919a68a3d0e3?w=600&q=80" },
-  { name: "Banana Powder", desc: "Spray-dried green banana powder — gluten-free, naturally sweet, ideal for infant foods and health supplements.", tag: "Dehydrated", origin: "🇮🇳 Jalgaon, Maharashtra", img: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=600&q=80" },
-  { name: "Indian Spice Blends", desc: "Authentic masala blends — Garam Masala, Chole Masala, Curry Powder — crafted from traditional recipes.", tag: "Spice Mix", origin: "🇮🇳 India", img: "https://images.unsplash.com/photo-1517244683847-7456b63c5969?w=600&q=80" },
-  { name: "Onion Powder", desc: "Dehydrated onion powder — deep flavour, no moisture, long shelf-life. Ideal for food processing and seasoning.", tag: "Dehydrated", origin: "🇮🇳 Nashik, Maharashtra", img: "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=600&q=80" },
-  { name: "Dehydrated Vegetables", desc: "Garlic flakes, ginger powder, coriander, fenugreek leaves — entire range of dehydrated farm products.", tag: "Dehydrated", origin: "🇮🇳 Various States", img: "https://images.unsplash.com/photo-1543362906-acfc16c67564?w=600&q=80" }
-];
-
-function productCard(p) {
-  return `
-    <div class="prod-card">
-      <div class="prod-img">
-        <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&q=80'">
-        <span class="prod-tag">${p.tag}</span>
-      </div>
-      <div class="prod-info">
-        <div class="prod-name">${p.name}</div>
-        <div class="prod-desc">${p.desc}</div>
-        <div class="prod-footer">
-          <span class="prod-origin">${p.origin}</span>
-          <button class="prod-btn" onclick="showPage('contact')">Enquire</button>
-        </div>
-      </div>
-    </div>`;
-}
-
-document.getElementById('home-products').innerHTML = products.slice(0,4).map(productCard).join('');
-document.getElementById('all-products-grid').innerHTML = products.map(productCard).join('');
-
-// ── NAVIGATION ──
-function showPage(name) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-' + name).classList.add('active');
-  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-  const navEl = document.getElementById('nav-' + name);
-  if (navEl) navEl.classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  return false;
-}
-
-function scrollToSection(id) {
-  setTimeout(() => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, 100);
-}
-
-// ── SLIDER ──
-let currentSlide = 0;
-const slides = document.querySelectorAll('.slide');
-const dots = document.querySelectorAll('.s-dot');
-
-function goSlide(n) {
-  slides[currentSlide].classList.remove('active-slide');
-  dots[currentSlide].classList.remove('active');
-  currentSlide = n;
-  slides[currentSlide].classList.add('active-slide');
-  dots[currentSlide].classList.add('active');
-}
-
-setInterval(() => goSlide((currentSlide + 1) % slides.length), 5000);
-
-// ── MOBILE MENU ──
-function toggleMobile() {
-  document.getElementById('mobileMenu').classList.toggle('open');
-}
-
-// ── TOAST HELPER ──
-function showToast(message, type = 'success') {
-  const toast = document.getElementById('toast');
-  toast.textContent = (type === 'success' ? '✅ ' : '❌ ') + message;
-  toast.className = 'toast toast-' + type + ' show';
-  setTimeout(() => toast.classList.remove('show'), 5000);
-}
-
-// ── FORM VALIDATION ──
-function validateForm(wrapper) {
-  const el = document.getElementById(wrapper);
-  let valid = true;
-
-  // Clear previous errors
-  el.querySelectorAll('.field-error').forEach(f => f.classList.remove('field-error'));
-  el.querySelectorAll('.error-msg').forEach(e => e.remove());
-
-  // Check required fields: name and email
-  const nameInput = el.querySelector('input[name="fullName"]');
-  const emailInput = el.querySelector('input[name="email"]');
-
-  if (!nameInput.value.trim()) {
-    nameInput.classList.add('field-error');
-    nameInput.insertAdjacentHTML('afterend', '<span class="error-msg">Name is required</span>');
-    valid = false;
-  }
-
-  if (!emailInput.value.trim()) {
-    emailInput.classList.add('field-error');
-    emailInput.insertAdjacentHTML('afterend', '<span class="error-msg">Email is required</span>');
-    valid = false;
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
-    emailInput.classList.add('field-error');
-    emailInput.insertAdjacentHTML('afterend', '<span class="error-msg">Please enter a valid email</span>');
-    valid = false;
-  }
-
-  return valid;
-}
-
-// ── COLLECT FORM DATA ──
-function collectFormData(wrapperId) {
-  const el = document.getElementById(wrapperId);
-  return {
-    from_name:   el.querySelector('input[name="fullName"]')?.value.trim()  || '',
-    company:     el.querySelector('input[name="company"]')?.value.trim()   || 'N/A',
-    from_email:  el.querySelector('input[name="email"]')?.value.trim()     || '',
-    phone:       el.querySelector('input[name="phone"]')?.value.trim()     || 'N/A',
-    country:     el.querySelector('input[name="country"]')?.value.trim()   || 'N/A',
-    product:     el.querySelector('select[name="product"]')?.value         || 'N/A',
-    quantity:    el.querySelector('input[name="quantity"]')?.value.trim()   || 'N/A',
-    message:     el.querySelector('textarea[name="message"]')?.value.trim()|| 'No message provided',
-    form_source: wrapperId === 'homeFormWrapper' ? 'Home Page Enquiry' : 'Contact Page Message'
-  };
-}
-
-// ── RESET FORM ──
-function resetForm(wrapperId) {
-  const el = document.getElementById(wrapperId);
-  el.querySelectorAll('input').forEach(i => i.value = '');
-  el.querySelectorAll('textarea').forEach(t => t.value = '');
-  el.querySelectorAll('select').forEach(s => s.selectedIndex = 0);
-}
-
-// ═══════════════════════════════════════
-//  SUBMIT FORM — sends email via EmailJS
-// ═══════════════════════════════════════
-async function submitForm(wrapperId) {
-  // 1. Validate
-  if (!validateForm(wrapperId)) return;
-
-  // 2. Collect data
-  const data = collectFormData(wrapperId);
-
-  // 3. Disable button while sending
-  const wrapper = document.getElementById(wrapperId);
-  const btn = wrapper.querySelector('.form-submit button');
-  const originalText = btn.textContent;
-  btn.disabled = true;
-  btn.textContent = '⏳ Sending...';
-
-  // 4. Check if EmailJS is configured
-  if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
-    // ── FALLBACK: open user's email client with pre-filled data ──
-    const subject = encodeURIComponent(`New Enquiry from ${data.from_name} — ${data.form_source}`);
-    const body = encodeURIComponent(
-      `Name: ${data.from_name}\n` +
-      `Company: ${data.company}\n` +
-      `Email: ${data.from_email}\n` +
-      `Phone: ${data.phone}\n` +
-      `Country: ${data.country}\n` +
-      `Product: ${data.product}\n` +
-      `Quantity: ${data.quantity}\n` +
-      `\nMessage:\n${data.message}`
-    );
-    // ▼ CHANGE THIS EMAIL to the receiver's address ▼
-    const receiverEmail = 'contact@manjushainternational.com';
-    window.location.href = `mailto:${receiverEmail}?subject=${subject}&body=${body}`;
-
-    btn.disabled = false;
-    btn.textContent = originalText;
-    showToast('Opening your email client — please send the pre-filled email.');
-    return;
-  }
-
-  // 5. Send via EmailJS
-  try {
-    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, data);
-    showToast('Your enquiry has been submitted! We\'ll reply within 24 hours.', 'success');
-    resetForm(wrapperId);
-  } catch (err) {
-    console.error('EmailJS error:', err);
-    showToast('Failed to send. Please email us directly at contact@manjushainternational.com', 'error');
-  } finally {
-    btn.disabled = false;
-    btn.textContent = originalText;
-  }
-}
-</script>
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/slider.js"></script>
+<script src="js/form.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

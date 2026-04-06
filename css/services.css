@@ -1,0 +1,51 @@
+﻿/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   Services Grid & Cards
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+
+.services-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 28px;
+}
+
+.service-card {
+  background: var(--white); border-radius: 16px; overflow: hidden;
+  box-shadow: 0 4px 20px rgba(26, 18, 8, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(26, 18, 8, 0.14);
+}
+
+.svc-img { width: 100%; height: 200px; object-fit: cover; }
+.svc-body { padding: 24px; }
+
+.svc-icon {
+  width: 48px; height: 48px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--green), var(--green-light));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; margin-bottom: 14px;
+  box-shadow: 0 4px 12px rgba(45, 90, 27, 0.3);
+}
+
+.svc-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem; font-weight: 700;
+  color: var(--dark); margin-bottom: 8px;
+}
+
+.svc-desc { color: var(--text-light); font-size: 14px; line-height: 1.7; }
+
+.svc-list {
+  margin-top: 14px; padding-left: 0; list-style: none;
+  display: flex; flex-direction: column; gap: 6px;
+}
+
+.svc-list li {
+  font-size: 13px; color: var(--text-light);
+  display: flex; align-items: center; gap: 8px;
+}
+
+.svc-list li::before { content: '\2713'; color: var(--green-mid); font-weight: 700; }
