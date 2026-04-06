@@ -1,72 +1,14 @@
-﻿/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   Hero Banner & Slider
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
-
-.banner-slider {
-  position: relative; overflow: hidden;
-  height: 100vh; min-height: 600px;
-}
-
-.slide {
-  position: absolute; inset: 0; opacity: 0;
-  transition: opacity 0.8s ease; display: flex; align-items: center;
-}
-
-.slide.active-slide { opacity: 1; }
-
-.slide-bg {
-  position: absolute; inset: 0;
-  background-size: cover; background-position: center;
-}
-
-.slide-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(120deg, rgba(15, 11, 5, 0.85) 0%, rgba(15, 11, 5, 0.4) 100%);
-}
-
-.slide-content {
-  position: relative; z-index: 2;
-  max-width: 1200px; margin: 0 auto;
-  padding: 100px 2rem 0; width: 100%;
-}
-
-.slide-content h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.5rem, 5vw, 4.2rem);
-  font-weight: 900; color: #fff;
-  line-height: 1.1; margin-bottom: 1.2rem; max-width: 620px;
-}
-
-.slide-content h1 em { color: var(--gold); font-style: normal; }
-
-.slide-content p {
-  color: rgba(255, 255, 255, 0.75); font-size: 1.05rem;
-  max-width: 480px; line-height: 1.8; margin-bottom: 1.8rem;
-}
-
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(200, 151, 58, 0.15);
-  border: 1px solid rgba(200, 151, 58, 0.3);
-  color: var(--gold); padding: 6px 16px; border-radius: 100px;
-  font-size: 12px; font-weight: 600;
-  letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5rem;
-}
-
-.hero-badge::before { content: '\1F33F'; font-size: 14px; }
-
-.hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
-
-.slider-dots {
-  position: absolute; bottom: 32px; left: 50%;
-  transform: translateX(-50%);
-  display: flex; gap: 8px; z-index: 10;
-}
-
-.s-dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: rgba(255, 255, 255, 0.35);
-  cursor: pointer; transition: all 0.3s; border: none;
-}
-
-.s-dot.active { background: var(--gold); width: 24px; border-radius: 4px; }
+﻿.banner-slider { position:relative; overflow:hidden; height:100vh; min-height:600px; }
+.slide { position:absolute; inset:0; opacity:0; transition:opacity 0.8s ease; display:flex; align-items:center; }
+.slide.active-slide { opacity:1; }
+.slide-bg { position:absolute; inset:0; background-size:cover; background-position:center; }
+.slide-overlay { position:absolute; inset:0; background:linear-gradient(120deg,rgba(15,11,5,0.85) 0%,rgba(15,11,5,0.4) 100%); }
+.slide-content { position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:100px 2rem 0; width:100%; }
+.slide-content h1 { font-family:'Playfair Display',serif; font-size:clamp(2.5rem,5vw,4.2rem); font-weight:900; color:#fff; line-height:1.1; margin-bottom:1.2rem; max-width:620px; }
+.slide-content h1 em { color:var(--gold); font-style:normal; }
+.slide-content p { color:rgba(255,255,255,0.75); font-size:1.05rem; max-width:480px; line-height:1.8; margin-bottom:1.8rem; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(200,151,58,0.15); border:1px solid rgba(200,151,58,0.3); color:var(--gold); padding:6px 16px; border-radius:100px; font-size:12px; font-weight:600; letter-spacing:2px; text-transform:uppercase; margin-bottom:1.5rem; }
+.hero-buttons { display:flex; gap:1rem; flex-wrap:wrap; }
+.slider-dots { position:absolute; bottom:32px; left:50%; transform:translateX(-50%); display:flex; gap:8px; z-index:10; }
+.s-dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.35); cursor:pointer; transition:all 0.3s; border:none; }
+.s-dot.active { background:var(--gold); width:24px; border-radius:4px; }

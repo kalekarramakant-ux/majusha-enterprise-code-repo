@@ -1,21 +1,10 @@
-﻿/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   Design Tokens & CSS Custom Properties
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
-
-:root {
-  --gold: #C8973A;
-  --gold-light: #E8B95A;
-  --dark: #1A1208;
-  --deep: #0F0B05;
-  --cream: #FAF6EE;
-  --cream2: #F2EAD8;
-  --green: #2D5A1B;
-  --green-mid: #3D7A25;
-  --green-light: #5A9E3A;
+﻿:root {
+  --gold: #C8973A; --gold-light: #E8B95A;
+  --dark: #1A1208; --deep: #0F0B05;
+  --cream: #FAF6EE; --cream2: #F2EAD8;
+  --green: #2D5A1B; --green-mid: #3D7A25; --green-light: #5A9E3A;
   --red-dot: #E63946;
-  --text: #2C2010;
-  --text-light: #6B5E4A;
-  --white: #FFFFFF;
-  --shadow: 0 8px 32px rgba(26, 18, 8, 0.15);
-  --shadow-deep: 0 20px 60px rgba(26, 18, 8, 0.25);
+  --text: #2C2010; --text-light: #6B5E4A; --white: #FFFFFF;
+  --shadow: 0 8px 32px rgba(26,18,8,0.15);
+  --shadow-deep: 0 20px 60px rgba(26,18,8,0.25);
 }

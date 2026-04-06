@@ -1,111 +1,52 @@
-﻿/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   Navbar & Mobile Menu
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
-
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  background: rgba(15, 11, 5, 0.96);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(200, 151, 58, 0.25);
-  padding: 0 2rem;
-  display: flex; align-items: center; justify-content: space-between;
-  height: 72px;
+﻿nav {
+  position:fixed; top:0; left:0; right:0; z-index:1000;
+  background:rgba(15,11,5,0.96); backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(200,151,58,0.25);
+  padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:72px;
 }
-
-.logo-wrap {
-  display: flex; align-items: center; gap: 12px; text-decoration: none;
-}
-
+.logo-wrap { display:flex; align-items:center; gap:12px; text-decoration:none; }
 .logo-icon {
-  width: 48px; height: 48px;
-  background: linear-gradient(135deg, var(--gold), var(--green-mid));
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 22px; font-weight: 900; color: white;
-  box-shadow: 0 4px 16px rgba(200, 151, 58, 0.4);
+  width:48px; height:48px; background:linear-gradient(135deg,var(--gold),var(--green-mid));
+  border-radius:10px; display:flex; align-items:center; justify-content:center;
+  font-family:'Playfair Display',serif; font-size:22px; font-weight:900; color:white;
+  box-shadow:0 4px 16px rgba(200,151,58,0.4);
 }
-
-.logo-text { display: flex; flex-direction: column; }
-
-.logo-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 18px; font-weight: 700; color: var(--gold); line-height: 1.1;
-}
-
-.logo-tagline {
-  font-size: 10px; color: rgba(255, 255, 255, 0.5);
-  letter-spacing: 2px; text-transform: uppercase;
-}
-
-.nav-links {
-  display: flex; align-items: center; gap: 0; list-style: none;
-}
-
-.nav-links li { position: relative; }
-
+.logo-text { display:flex; flex-direction:column; }
+.logo-name { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; color:var(--gold); line-height:1.1; }
+.logo-tagline { font-size:10px; color:rgba(255,255,255,0.5); letter-spacing:2px; text-transform:uppercase; }
+.nav-links { display:flex; align-items:center; gap:0; list-style:none; }
+.nav-links li { position:relative; }
 .nav-links a {
-  display: block; padding: 0 18px; height: 72px; line-height: 72px;
-  color: rgba(255, 255, 255, 0.85); text-decoration: none;
-  font-size: 14px; font-weight: 500; letter-spacing: 0.3px;
-  transition: color 0.2s, background 0.2s;
+  display:block; padding:0 18px; height:72px; line-height:72px;
+  color:rgba(255,255,255,0.85); text-decoration:none; font-size:14px; font-weight:500;
+  letter-spacing:0.3px; transition:color 0.2s,background 0.2s;
 }
-
-.nav-links a:hover { color: var(--gold); background: rgba(200, 151, 58, 0.08); }
-.nav-links a.active { color: var(--gold); }
-
-.has-dropdown:hover .dropdown { display: block; }
-
+.nav-links a:hover { color:var(--gold); background:rgba(200,151,58,0.08); }
+.nav-links a.active { color:var(--gold); }
+.has-dropdown:hover .dropdown { display:block; }
 .dropdown {
-  display: none; position: absolute; top: 72px; left: 0;
-  background: rgba(15, 11, 5, 0.98);
-  border: 1px solid rgba(200, 151, 58, 0.2);
-  border-top: 2px solid var(--gold);
-  min-width: 200px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
-  border-radius: 0 0 8px 8px;
+  display:none; position:absolute; top:72px; left:0;
+  background:rgba(15,11,5,0.98); border:1px solid rgba(200,151,58,0.2);
+  border-top:2px solid var(--gold); min-width:200px;
+  box-shadow:0 16px 40px rgba(0,0,0,0.4); border-radius:0 0 8px 8px;
 }
-
-.dropdown a {
-  height: auto; line-height: 1.4; padding: 12px 20px;
-  font-size: 13px; display: flex; align-items: center; gap: 8px;
-}
-
-.dropdown a::before { content: '\2192'; color: var(--gold); font-size: 11px; }
-
+.dropdown a { height:auto; line-height:1.4; padding:12px 20px; font-size:13px; display:flex; align-items:center; gap:8px; }
+.dropdown a::before { content:'\2192'; color:var(--gold); font-size:11px; }
 .nav-cta {
-  background: linear-gradient(135deg, var(--gold), var(--gold-light)) !important;
-  color: var(--dark) !important; font-weight: 600 !important;
-  border-radius: 6px; margin-left: 12px;
-  padding: 0 20px !important; height: 40px !important;
-  line-height: 40px !important; align-self: center;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light)) !important;
+  color:var(--dark) !important; font-weight:600 !important; border-radius:6px; margin-left:12px;
+  padding:0 20px !important; height:40px !important; line-height:40px !important; align-self:center;
 }
-
-.nav-cta:hover { opacity: 0.9; background: var(--gold-light) !important; }
-
-.hamburger {
-  display: none; flex-direction: column; gap: 5px;
-  cursor: pointer; padding: 4px;
-}
-
-.hamburger span {
-  display: block; width: 24px; height: 2px;
-  background: var(--gold); border-radius: 2px; transition: 0.3s;
-}
-
+.nav-cta:hover { opacity:0.9; }
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; }
+.hamburger span { display:block; width:24px; height:2px; background:var(--gold); border-radius:2px; transition:0.3s; }
 .mobile-menu {
-  position: fixed; inset: 0; top: 72px;
-  background: rgba(15, 11, 5, 0.98); z-index: 999;
-  padding: 2rem; display: flex; flex-direction: column; gap: 0;
-  transform: translateX(100%); transition: transform 0.3s;
+  position:fixed; inset:0; top:72px; background:rgba(15,11,5,0.98); z-index:999;
+  padding:2rem; display:flex; flex-direction:column; transform:translateX(100%); transition:transform 0.3s;
 }
-
-.mobile-menu.open { transform: translateX(0); }
-
+.mobile-menu.open { transform:translateX(0); }
 .mobile-menu a {
-  color: rgba(255, 255, 255, 0.8); text-decoration: none;
-  font-size: 18px; padding: 16px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06); font-weight: 500;
+  color:rgba(255,255,255,0.8); text-decoration:none; font-size:18px; padding:16px 0;
+  border-bottom:1px solid rgba(255,255,255,0.06); font-weight:500;
 }
-
-.mobile-menu a:hover { color: var(--gold); }
+.mobile-menu a:hover { color:var(--gold); }

@@ -1,96 +1,55 @@
-﻿/**
- * Form Validation, Collection & Submission
- */
-
-function showToast(message, type) {
+﻿/** Form validation, collection & submission */
+function showToast(msg, type) {
   type = type || 'success';
-  var toast = document.getElementById('toast');
-  toast.textContent = (type === 'success' ? 'Done! ' : 'Error! ') + message;
-  toast.className = 'toast toast-' + type + ' show';
-  setTimeout(function() { toast.classList.remove('show'); }, 5000);
+  var t = document.getElementById('toast');
+  t.textContent = (type==='success'?'Done! ':'Error! ') + msg;
+  t.className = 'toast toast-' + type + ' show';
+  setTimeout(function(){ t.classList.remove('show'); }, 5000);
 }
 
-function validateForm(wrapperId) {
-  var el = document.getElementById(wrapperId);
-  var valid = true;
-  el.querySelectorAll('.field-error').forEach(function(f) { f.classList.remove('field-error'); });
-  el.querySelectorAll('.error-msg').forEach(function(e) { e.remove(); });
-
-  var nameInput  = el.querySelector('input[name="fullName"]');
-  var emailInput = el.querySelector('input[name="email"]');
-
-  if (!nameInput.value.trim()) {
-    nameInput.classList.add('field-error');
-    nameInput.insertAdjacentHTML('afterend', '<span class="error-msg">Name is required</span>');
-    valid = false;
-  }
-  if (!emailInput.value.trim()) {
-    emailInput.classList.add('field-error');
-    emailInput.insertAdjacentHTML('afterend', '<span class="error-msg">Email is required</span>');
-    valid = false;
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+/.test(emailInput.value.trim())) {
-    emailInput.classList.add('field-error');
-    emailInput.insertAdjacentHTML('afterend', '<span class="error-msg">Please enter a valid email</span>');
-    valid = false;
-  }
+function validateForm(id) {
+  var el = document.getElementById(id), valid = true;
+  el.querySelectorAll('.field-error').forEach(function(f){f.classList.remove('field-error');});
+  el.querySelectorAll('.error-msg').forEach(function(e){e.remove();});
+  var n = el.querySelector('input[name="fullName"]');
+  var e = el.querySelector('input[name="email"]');
+  if(!n.value.trim()){n.classList.add('field-error');n.insertAdjacentHTML('afterend','<span class="error-msg">Name is required</span>');valid=false;}
+  if(!e.value.trim()){e.classList.add('field-error');e.insertAdjacentHTML('afterend','<span class="error-msg">Email is required</span>');valid=false;}
+  else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+/.test(e.value.trim())){e.classList.add('field-error');e.insertAdjacentHTML('afterend','<span class="error-msg">Invalid email</span>');valid=false;}
   return valid;
 }
 
-function collectFormData(wrapperId) {
-  var el = document.getElementById(wrapperId);
+function collectFormData(id) {
+  var el = document.getElementById(id);
   return {
-    from_name:   (el.querySelector('input[name="fullName"]')   || {}).value || '',
-    company:     (el.querySelector('input[name="company"]')    || {}).value || 'N/A',
-    from_email:  (el.querySelector('input[name="email"]')      || {}).value || '',
-    phone:       (el.querySelector('input[name="phone"]')      || {}).value || 'N/A',
-    country:     (el.querySelector('input[name="country"]')    || {}).value || 'N/A',
-    product:     (el.querySelector('select[name="product"]')   || {}).value || 'N/A',
-    quantity:    (el.querySelector('input[name="quantity"]')    || {}).value || 'N/A',
-    message:     (el.querySelector('textarea[name="message"]') || {}).value || 'No message provided',
-    form_source: wrapperId === 'homeFormWrapper' ? 'Home Page Enquiry' : 'Contact Page Message',
+    from_name:(el.querySelector('input[name="fullName"]')||{}).value||'',
+    company:(el.querySelector('input[name="company"]')||{}).value||'N/A',
+    from_email:(el.querySelector('input[name="email"]')||{}).value||'',
+    phone:(el.querySelector('input[name="phone"]')||{}).value||'N/A',
+    country:(el.querySelector('input[name="country"]')||{}).value||'N/A',
+    product:(el.querySelector('select[name="product"]')||{}).value||'N/A',
+    quantity:(el.querySelector('input[name="quantity"]')||{}).value||'N/A',
+    message:(el.querySelector('textarea[name="message"]')||{}).value||'No message',
+    form_source: id==='homeFormWrapper'?'Home Page':'Contact Page',
   };
 }
 
-function resetForm(wrapperId) {
-  var el = document.getElementById(wrapperId);
-  el.querySelectorAll('input').forEach(function(i) { i.value = ''; });
-  el.querySelectorAll('textarea').forEach(function(t) { t.value = ''; });
-  el.querySelectorAll('select').forEach(function(s) { s.selectedIndex = 0; });
+function resetForm(id) {
+  var el = document.getElementById(id);
+  el.querySelectorAll('input').forEach(function(i){i.value='';});
+  el.querySelectorAll('textarea').forEach(function(t){t.value='';});
+  el.querySelectorAll('select').forEach(function(s){s.selectedIndex=0;});
 }
 
-async function submitForm(wrapperId) {
-  if (!validateForm(wrapperId)) return;
-  var data    = collectFormData(wrapperId);
-  var wrapper = document.getElementById(wrapperId);
-  var btn     = wrapper.querySelector('.form-submit button');
-  var originalText = btn.textContent;
-  btn.disabled = true;
-  btn.textContent = 'Sending...';
-
-  if (CONFIG.emailjs.publicKey === 'YOUR_PUBLIC_KEY') {
-    var subject = encodeURIComponent('New Enquiry from ' + data.from_name + ' - ' + data.form_source);
-    var body = encodeURIComponent(
-      'Name: ' + data.from_name + '\nCompany: ' + data.company +
-      '\nEmail: ' + data.from_email + '\nPhone: ' + data.phone +
-      '\nCountry: ' + data.country + '\nProduct: ' + data.product +
-      '\nQuantity: ' + data.quantity + '\n\nMessage:\n' + data.message
-    );
-    window.location.href = 'mailto:' + CONFIG.receiverEmail + '?subject=' + subject + '&body=' + body;
-    btn.disabled = false;
-    btn.textContent = originalText;
-    showToast('Opening your email client.');
-    return;
+async function submitForm(id) {
+  if(!validateForm(id)) return;
+  var data=collectFormData(id), w=document.getElementById(id), btn=w.querySelector('.form-submit button'), orig=btn.textContent;
+  btn.disabled=true; btn.textContent='Sending...';
+  if(CONFIG.emailjs.publicKey==='YOUR_PUBLIC_KEY'){
+    window.location.href='mailto:'+CONFIG.receiverEmail+'?subject='+encodeURIComponent('Enquiry from '+data.from_name)+'&body='+encodeURIComponent('Name: '+data.from_name+'\nEmail: '+data.from_email+'\nProduct: '+data.product+'\n\n'+data.message);
+    btn.disabled=false; btn.textContent=orig; showToast('Opening email client.'); return;
   }
-
-  try {
-    await emailjs.send(CONFIG.emailjs.serviceId, CONFIG.emailjs.templateId, data);
-    showToast("Your enquiry has been submitted! We'll reply within 24 hours.", 'success');
-    resetForm(wrapperId);
-  } catch (err) {
-    console.error('EmailJS error:', err);
-    showToast('Failed to send. Please email us directly at ' + CONFIG.receiverEmail, 'error');
-  } finally {
-    btn.disabled = false;
-    btn.textContent = originalText;
-  }
+  try { await emailjs.send(CONFIG.emailjs.serviceId,CONFIG.emailjs.templateId,data); showToast("Submitted! We'll reply within 24 hours.",'success'); resetForm(id); }
+  catch(err){ console.error(err); showToast('Failed. Email us at '+CONFIG.receiverEmail,'error'); }
+  finally { btn.disabled=false; btn.textContent=orig; }
 }

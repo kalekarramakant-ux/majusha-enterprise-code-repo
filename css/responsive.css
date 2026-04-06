@@ -1,20 +1,12 @@
-﻿/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   Responsive Breakpoints
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
-
-@media (max-width: 900px) {
-  .hero-content { grid-template-columns: 1fr; }
-  .hero-right { display: none; }
-  .about-inner { grid-template-columns: 1fr; }
-  .footer-inner { grid-template-columns: 1fr 1fr; }
-  .contact-grid { grid-template-columns: 1fr; }
-  .mission-grid { grid-template-columns: 1fr; }
-  .form-grid { grid-template-columns: 1fr; }
+﻿@media(max-width:900px) {
+  .about-inner,.contact-grid { grid-template-columns:1fr; }
+  .footer-inner { grid-template-columns:1fr 1fr; }
+  .mission-grid { grid-template-columns:1fr; }
+  .form-grid { grid-template-columns:1fr; }
 }
-
-@media (max-width: 768px) {
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  nav .nav-cta { display: none; }
-  .footer-inner { grid-template-columns: 1fr; }
+@media(max-width:768px) {
+  .nav-links { display:none; }
+  .hamburger { display:flex; }
+  nav .nav-cta { display:none; }
+  .footer-inner { grid-template-columns:1fr; }
 }

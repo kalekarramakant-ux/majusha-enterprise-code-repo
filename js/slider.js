@@ -1,6 +1,4 @@
-﻿/**
- * Hero Banner Slider
- */
+﻿/** Hero Banner Slider (loaded only on index.html) */
 var currentSlide = 0;
 var slides = document.querySelectorAll('.slide');
 var dots   = document.querySelectorAll('.s-dot');
@@ -13,6 +11,4 @@ function goSlide(n) {
   dots[currentSlide].classList.add('active');
 }
 
-setInterval(function() {
-  goSlide((currentSlide + 1) % slides.length);
-}, 5000);
+setInterval(function() { goSlide((currentSlide + 1) % slides.length); }, 5000);

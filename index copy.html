@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manjusha Enterprises - Global Agro Exports</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/products.css">
+  <link rel="stylesheet" href="css/services.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<!-- NAVBAR -->
+<nav>
+  <a class="logo-wrap" href="index.html">
+    <div class="logo-icon">ME</div>
+    <div class="logo-text">
+      <span class="logo-name">Manjusha Enterprises</span>
+      <span class="logo-tagline">Global Agro Exports</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li class="has-dropdown">
+      <a href="services.html">Services &#9662;</a>
+      <div class="dropdown">
+        <a href="services.html#export-services">Export Services</a>
+        <a href="services.html#import-services">Import Services</a>
+      </div>
+    </li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+    <li><a href="contact.html" class="nav-cta">Get Quote</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="products.html">Products</a>
+  <a href="about.html">About Us</a>
+  <a href="contact.html">Contact Us</a>
+</div>
+
+<!-- HERO SLIDER -->
+<div class="banner-slider">
+  <div class="slide active-slide">
+    <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=1800&q=80')"></div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <div class="hero-badge">Trusted Since 2010</div>
+      <h1>From India's <em>Fertile Fields</em> to the World's Tables</h1>
+      <p>Premium agro-products exported to 30+ countries with world-class standards.</p>
+      <div class="hero-buttons"><a href="products.html" class="btn-primary">Explore Products</a><a href="contact.html" class="btn-outline">Get a Quote</a></div>
+    </div>
+  </div>
+  <div class="slide">
+    <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=1800&q=80')"></div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <div class="hero-badge">100% Natural</div>
+      <h1>Pure <em>Indian Spices</em> &amp; Dehydrated Superfoods</h1>
+      <p>From turmeric to moringa - sourced directly from verified farms across India.</p>
+      <div class="hero-buttons"><a href="products.html" class="btn-primary">View Spices</a><a href="about.html" class="btn-outline">Our Story</a></div>
+    </div>
+  </div>
+  <div class="slide">
+    <div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1588964895597-cfccd6e2dbf9?w=1800&q=80')"></div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <div class="hero-badge">Export - Import - Logistics</div>
+      <h1>Your <em>Reliable Partner</em> in Global Trade</h1>
+      <p>End-to-end services with full documentation and on-time delivery.</p>
+      <div class="hero-buttons"><a href="services.html" class="btn-primary">Our Services</a><a href="contact.html" class="btn-outline">Contact Us</a></div>
+    </div>
+  </div>
+  <div class="slider-dots"><button class="s-dot active" onclick="goSlide(0)"></button><button class="s-dot" onclick="goSlide(1)"></button><button class="s-dot" onclick="goSlide(2)"></button></div>
+</div>
+
+<div class="certifications"><div class="cert-row">
+  <div class="cert-badge"><span>&#127941;</span> APEDA Certified</div>
+  <div class="cert-badge"><span>&#127807;</span> FSSAI Approved</div>
+  <div class="cert-badge"><span>&#127470;&#127475;</span> Made in India</div>
+  <div class="cert-badge"><span>&#127758;</span> 30+ Countries</div>
+  <div class="cert-badge"><span>&#128230;</span> 500+ MT Exported</div>
+</div></div>
+
+<div class="about-strip"><div class="about-inner">
+  <div class="about-img-wrap">
+    <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=800&q=80" alt="Warehouse">
+    <div class="about-badge-float"><strong>15+</strong>Years of<br>Excellence</div>
+  </div>
+  <div class="about-text">
+    <span class="section-tag" style="color:var(--gold-light);">- About Us</span>
+    <h2 class="section-title" style="color:#fff;">India's Trusted <em>Agro-Export</em> Partner</h2>
+    <p class="section-sub">Founded in Pune, we've been bridging Indian farms with global markets for over 15 years.</p>
+    <div class="about-features">
+      <div class="feat-item"><div class="feat-icon">&#127806;</div><div><div class="feat-title">Farm-to-Export Quality</div><div class="feat-desc">Direct sourcing, multi-stage checks.</div></div></div>
+      <div class="feat-item"><div class="feat-icon">&#128220;</div><div><div class="feat-title">Full Compliance</div><div class="feat-desc">APEDA, FSSAI, Phytosanitary.</div></div></div>
+      <div class="feat-item"><div class="feat-icon">&#128674;</div><div><div class="feat-title">On-Time Delivery</div><div class="feat-desc">Air, sea, and road freight.</div></div></div>
+    </div>
+    <div style="margin-top:2rem;"><a href="about.html" class="btn-primary">Read Our Story</a></div>
+  </div>
+</div></div>
+
+<section class="products-section"><div class="container">
+  <span class="section-tag">- Our Products</span>
+  <h2 class="section-title">Premium <em>Export Products</em></h2>
+  <p class="section-sub">Handpicked from India's finest farms.</p>
+  <div class="products-grid" id="home-products"></div>
+  <div class="view-all-wrap"><a href="products.html" class="btn-primary">View All Products</a></div>
+</div></section>
+
+<section class="world-section"><div class="container">
+  <span class="section-tag" style="color:var(--gold-light);justify-content:center;">- Global Reach</span>
+  <h2 class="section-title" style="color:#fff;text-align:center;">Serving <em style="color:var(--gold)">the World</em></h2>
+  <p class="section-sub" style="text-align:center;">Over 30 countries across 5 continents.</p>
+  <div class="map-container">
+    <svg class="world-svg" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1000" height="500" fill="rgba(45,90,27,0.1)" rx="12"/>
+      <path d="M95 80L200 70 230 100 240 160 200 200 180 240 150 250 130 220 100 180 80 140Z" fill="rgba(45,90,27,0.55)" stroke="rgba(200,151,58,0.3)"/>
+      <path d="M185 260L230 250 250 300 240 370 210 420 185 400 165 350 170 290Z" fill="rgba(45,90,27,0.55)" stroke="rgba(200,151,58,0.3)"/>
+      <path d="M450 60L510 55 530 80 520 110 490 120 460 115 440 90Z" fill="rgba(45,90,27,0.55)" stroke="rgba(200,151,58,0.3)"/>
+      <path d="M450 140L510 135 540 170 545 250 520 340 490 370 460 350 440 290 435 210 445 170Z" fill="rgba(45,90,27,0.55)" stroke="rgba(200,151,58,0.3)"/>
+      <path d="M530 55L700 50 760 80 780 120 750 160 700 170 660 190 620 180 580 160 550 140 530 110Z" fill="rgba(45,90,27,0.55)" stroke="rgba(200,151,58,0.3)"/>
+      <path d="M625 155L655 150 670 175 665 220 645 250 625 235 615 205 615 175Z" fill="rgba(200,151,58,0.5)" stroke="rgba(200,151,58,0.8)" stroke-width="1.5"/>
+      <path d="M750 290L840 285 870 320 855 370 820 390 775 375 755 340 750 305Z" fill="rgba(45,90,27,0.55)" stroke="rgba(200,151,58,0.3)"/>
+      <text x="640" y="210" fill="rgba(200,151,58,0.9)" font-size="9" font-weight="700" text-anchor="middle">India</text>
+      <circle cx="640" cy="195" r="6" fill="var(--gold)"><animate attributeName="r" values="5;9;5" dur="2s" repeatCount="indefinite"/></circle>
+      <circle cx="462" cy="82" r="5" fill="#E63946"><animate attributeName="r" values="4;7;4" dur="2.2s" repeatCount="indefinite"/></circle><text x="462" y="76" fill="rgba(255,255,255,0.7)" font-size="7" text-anchor="middle">UK</text>
+      <circle cx="490" cy="80" r="4.5" fill="#E63946"><animate attributeName="r" values="4;6.5;4" dur="1.9s" repeatCount="indefinite"/></circle><text x="490" y="74" fill="rgba(255,255,255,0.7)" font-size="7" text-anchor="middle">DE</text>
+      <circle cx="155" cy="140" r="5" fill="#E63946"><animate attributeName="r" values="4;7;4" dur="2.1s" repeatCount="indefinite"/></circle><text x="155" y="134" fill="rgba(255,255,255,0.7)" font-size="7" text-anchor="middle">USA</text>
+      <circle cx="810" cy="335" r="5" fill="#E63946"><animate attributeName="r" values="4;7;4" dur="2.3s" repeatCount="indefinite"/></circle><text x="810" y="329" fill="rgba(255,255,255,0.7)" font-size="7" text-anchor="middle">AUS</text>
+      <circle cx="577" cy="158" r="5" fill="#E63946"><animate attributeName="r" values="4;7;4" dur="1.8s" repeatCount="indefinite"/></circle><text x="577" y="152" fill="rgba(255,255,255,0.7)" font-size="7" text-anchor="middle">UAE</text>
+      <circle cx="762" cy="113" r="4.5" fill="#E63946"><animate attributeName="r" values="4;6.5;4" dur="2s" repeatCount="indefinite"/></circle><text x="762" y="107" fill="rgba(255,255,255,0.7)" font-size="7" text-anchor="middle">JP</text>
+      <circle cx="726" cy="205" r="4" fill="#E63946"><animate attributeName="r" values="3.5;6;3.5" dur="2.2s" repeatCount="indefinite"/></circle><text x="726" y="199" fill="rgba(255,255,255,0.7)" font-size="7" text-anchor="middle">SG</text>
+      <circle cx="215" cy="320" r="4.5" fill="#E63946"><animate attributeName="r" values="4;6.5;4" dur="2.8s" repeatCount="indefinite"/></circle><text x="215" y="314" fill="rgba(255,255,255,0.7)" font-size="7" text-anchor="middle">BR</text>
+    </svg>
+  </div>
+  <div class="country-tags">
+    <span class="c-tag">UK</span><span class="c-tag">Germany</span><span class="c-tag">France</span><span class="c-tag">USA</span><span class="c-tag">Canada</span><span class="c-tag">Australia</span><span class="c-tag">UAE</span><span class="c-tag">Saudi Arabia</span><span class="c-tag">Japan</span><span class="c-tag">Singapore</span><span class="c-tag">South Africa</span><span class="c-tag">Netherlands</span><span class="c-tag">Brazil</span><span class="c-tag">China</span><span class="c-tag">Kenya</span><span class="c-tag">+ 15 more</span>
+  </div>
+</div></section>
+
+<section class="query-section"><div class="container">
+  <div style="text-align:center;margin-bottom:3rem;">
+    <span class="section-tag" style="justify-content:center;">- Send Enquiry</span>
+    <h2 class="section-title">Submit Your <em>Requirement</em></h2>
+    <p class="section-sub" style="margin:0 auto;">We'll get back within 24 hours.</p>
+  </div>
+  <div class="form-wrapper" id="homeFormWrapper">
+    <div class="form-grid">
+      <div class="form-group"><label>Full Name *</label><input type="text" name="fullName" placeholder="Your full name" required></div>
+      <div class="form-group"><label>Company</label><input type="text" name="company" placeholder="Company name"></div>
+      <div class="form-group"><label>Email *</label><input type="email" name="email" placeholder="your@email.com" required></div>
+      <div class="form-group"><label>Phone</label><input type="tel" name="phone" placeholder="+1 234 567 8900"></div>
+      <div class="form-group"><label>Country</label><input type="text" name="country" placeholder="Your country"></div>
+      <div class="form-group"><label>Product</label><select name="product"><option value="">Select</option><option>Moringa Powder</option><option>Makhana</option><option>Turmeric Powder</option><option>Chilli Powder</option><option>Banana Powder</option><option>Indian Spices</option><option>Onion Powder</option><option>Multiple</option></select></div>
+      <div class="form-group full"><label>Quantity</label><input type="text" name="quantity" placeholder="e.g. 5 MT/month"></div>
+      <div class="form-group full"><label>Message</label><textarea name="message" placeholder="Quality specs, packaging, timeline..."></textarea></div>
+    </div>
+    <div class="form-submit"><button onclick="submitForm('homeFormWrapper')">Submit Requirement</button></div>
+  </div>
+</div></section>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-wrap" style="margin-bottom:12px;">
+        <div class="logo-icon" style="width:44px;height:44px;font-size:18px;">ME</div>
+        <div class="logo-text">
+          <span class="logo-name">Manjusha Enterprises</span>
+          <span class="logo-tagline" style="color:rgba(255,255,255,0.3);">Global Agro Exports</span>
+        </div>
+      </div>
+      <p>Premium Indian agro-products exported to 30+ countries since 2010.</p>
+      <p style="margin-top:12px; color:rgba(255,255,255,0.3);">Pune, Maharashtra, India</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="products.html">Products</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Our Products</h4>
+      <a href="products.html">Moringa Powder</a>
+      <a href="products.html">Makhana</a>
+      <a href="products.html">Turmeric Powder</a>
+      <a href="products.html">Chilli Powder</a>
+      <a href="products.html">Banana Powder</a>
+      <a href="products.html">Onion Powder</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:+918888815274">+91 88888 15274</a>
+      <a href="mailto:contact@manjushainternational.com">contact@manjushainternational.com</a>
+      <a href="contact.html">Pune, Maharashtra</a>
+      <a href="#">IEC: AAACM1234F</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Manjusha Enterprises. All rights reserved.</p>
+    <p>APEDA Certified - FSSAI Approved</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/slider.js"></script>
+<script src="js/form.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

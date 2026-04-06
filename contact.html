@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manjusha Enterprises - Global Agro Exports</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/products.css">
+  <link rel="stylesheet" href="css/services.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<!-- NAVBAR -->
+<nav>
+  <a class="logo-wrap" href="index.html">
+    <div class="logo-icon">ME</div>
+    <div class="logo-text">
+      <span class="logo-name">Manjusha Enterprises</span>
+      <span class="logo-tagline">Global Agro Exports</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li class="has-dropdown">
+      <a href="services.html">Services &#9662;</a>
+      <div class="dropdown">
+        <a href="services.html#export-services">Export Services</a>
+        <a href="services.html#import-services">Import Services</a>
+      </div>
+    </li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="contact.html" class="active">Contact Us</a></li>
+    <li><a href="contact.html" class="nav-cta">Get Quote</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="products.html">Products</a>
+  <a href="about.html">About Us</a>
+  <a href="contact.html">Contact Us</a>
+</div>
+<div class="page-hero"><h1>Contact <em>Us</em></h1><p>Have a query, need a quote, or want to discuss a bulk order?</p></div>
+<section style="background:var(--cream2);padding:80px 2rem;">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>Reach Out to <em style="color:var(--green-mid)">Manjusha Enterprises</em></h3>
+      <div class="contact-items">
+        <div class="contact-item"><div class="ci-icon">&#128205;</div><div><div class="ci-label">Office</div><div class="ci-val">Plot No. 11/6, Golecha Sarvada, Wagholi, Pune - 412207, Maharashtra</div></div></div>
+        <div class="contact-item"><div class="ci-icon">&#128222;</div><div><div class="ci-label">Phone / WhatsApp</div><div class="ci-val">+91 8888815274</div></div></div>
+        <div class="contact-item"><div class="ci-icon">&#9993;</div><div><div class="ci-label">Email</div><div class="ci-val">contact@manjushainternational.com</div></div></div>
+        <div class="contact-item"><div class="ci-icon">&#128336;</div><div><div class="ci-label">Hours</div><div class="ci-val">Mon - Sat: 10 AM - 7 PM IST</div></div></div>
+        <div class="contact-item"><div class="ci-icon">&#127760;</div><div><div class="ci-label">IEC Code</div><div class="ci-val">AAACM1234F - APEDA Registered</div></div></div>
+      </div>
+    </div>
+    <div id="contactFormWrapper">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--dark);margin-bottom:1.5rem;">Send Us a <em style="color:var(--green-mid)">Message</em></h3>
+      <div class="form-grid">
+        <div class="form-group"><label>Full Name *</label><input type="text" name="fullName" placeholder="Your full name" required></div>
+        <div class="form-group"><label>Company</label><input type="text" name="company" placeholder="Your company"></div>
+        <div class="form-group"><label>Email *</label><input type="email" name="email" placeholder="your@email.com" required></div>
+        <div class="form-group"><label>Phone</label><input type="tel" name="phone" placeholder="+1 234 567 8900"></div>
+        <div class="form-group"><label>Country</label><input type="text" name="country" placeholder="Your country"></div>
+        <div class="form-group"><label>Product</label><select name="product"><option>Select</option><option>Moringa Powder</option><option>Makhana</option><option>Turmeric Powder</option><option>Chilli Powder</option><option>Banana Powder</option><option>Indian Spices</option><option>Onion Powder</option><option>Other</option></select></div>
+        <div class="form-group full"><label>Message</label><textarea name="message" placeholder="How can we help?"></textarea></div>
+      </div>
+      <div class="form-submit" style="text-align:left;margin-top:20px;"><button onclick="submitForm('contactFormWrapper')">Send Message</button></div>
+    </div>
+  </div>
+</section>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-wrap" style="margin-bottom:12px;">
+        <div class="logo-icon" style="width:44px;height:44px;font-size:18px;">ME</div>
+        <div class="logo-text">
+          <span class="logo-name">Manjusha Enterprises</span>
+          <span class="logo-tagline" style="color:rgba(255,255,255,0.3);">Global Agro Exports</span>
+        </div>
+      </div>
+      <p>Premium Indian agro-products exported to 30+ countries since 2010.</p>
+      <p style="margin-top:12px; color:rgba(255,255,255,0.3);">Pune, Maharashtra, India</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="products.html">Products</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Our Products</h4>
+      <a href="products.html">Moringa Powder</a>
+      <a href="products.html">Makhana</a>
+      <a href="products.html">Turmeric Powder</a>
+      <a href="products.html">Chilli Powder</a>
+      <a href="products.html">Banana Powder</a>
+      <a href="products.html">Onion Powder</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:+918888815274">+91 88888 15274</a>
+      <a href="mailto:contact@manjushainternational.com">contact@manjushainternational.com</a>
+      <a href="contact.html">Pune, Maharashtra</a>
+      <a href="#">IEC: AAACM1234F</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Manjusha Enterprises. All rights reserved.</p>
+    <p>APEDA Certified - FSSAI Approved</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/form.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

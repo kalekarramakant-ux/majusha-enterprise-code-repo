@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manjusha Enterprises - Global Agro Exports</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/products.css">
+  <link rel="stylesheet" href="css/services.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<!-- NAVBAR -->
+<nav>
+  <a class="logo-wrap" href="index.html">
+    <div class="logo-icon">ME</div>
+    <div class="logo-text">
+      <span class="logo-name">Manjusha Enterprises</span>
+      <span class="logo-tagline">Global Agro Exports</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li class="has-dropdown">
+      <a href="services.html">Services &#9662;</a>
+      <div class="dropdown">
+        <a href="services.html#export-services">Export Services</a>
+        <a href="services.html#import-services">Import Services</a>
+      </div>
+    </li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="about.html" class="active">About Us</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+    <li><a href="contact.html" class="nav-cta">Get Quote</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="products.html">Products</a>
+  <a href="about.html">About Us</a>
+  <a href="contact.html">Contact Us</a>
+</div>
+<div class="page-hero"><h1>About <em>Us</em></h1><p>Pune-based agro-export company with 15+ years of experience.</p></div>
+<section style="background:var(--cream2);padding:80px 2rem;">
+  <div class="about-full">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-bottom:4rem;">
+      <div>
+        <span class="section-tag">- Our Story</span>
+        <h2 class="section-title">Built on <em>Trust &amp; Quality</em></h2>
+        <p style="color:var(--text-light);line-height:1.9;margin-bottom:1rem;">Founded in 2010 in Pune with a simple mission - bring India's finest agricultural products to the world.</p>
+        <p style="color:var(--text-light);line-height:1.9;margin-bottom:1rem;">We've built deep relationships with farmers across Maharashtra, Rajasthan, Bihar, and more.</p>
+        <p style="color:var(--text-light);line-height:1.9;">Today we export to 30+ countries, serving importers, distributors, and retail chains worldwide.</p>
+      </div>
+      <div><img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&q=80" alt="About" style="width:100%;height:380px;object-fit:cover;border-radius:16px;box-shadow:var(--shadow-deep);"></div>
+    </div>
+    <div class="mission-grid">
+      <div class="mission-card"><span class="mission-emoji">&#127919;</span><div class="mission-title">Our Mission</div><div class="mission-text">Connect India's agricultural wealth with the global market.</div></div>
+      <div class="mission-card"><span class="mission-emoji">&#128065;</span><div class="mission-title">Our Vision</div><div class="mission-text">Be India's most trusted agro-export brand globally.</div></div>
+      <div class="mission-card"><span class="mission-emoji">&#128142;</span><div class="mission-title">Our Values</div><div class="mission-text">Integrity, transparency, commitment to partners.</div></div>
+    </div>
+  </div>
+</section>
+<div class="team-strip"><div style="max-width:1200px;margin:0 auto;padding:0 2rem;">
+  <div style="text-align:center;margin-bottom:3rem;">
+    <span class="section-tag" style="color:var(--gold-light);justify-content:center;">- Our Team</span>
+    <h2 class="section-title" style="color:#fff;">Meet the <em>People</em> Behind the Brand</h2>
+  </div>
+  <div class="team-grid">
+    <div class="team-card"><div class="team-avatar">ME</div><div class="team-name">Mrs. Manjusha Kalekar</div><div class="team-role">Founder &amp; MD</div></div>
+    <div class="team-card"><div class="team-avatar" style="background:linear-gradient(135deg,var(--green),var(--gold))">R</div><div class="team-name">Mr. Ramkrushna Kalekar</div><div class="team-role">Joint MD</div></div>
+    <div class="team-card"><div class="team-avatar" style="background:linear-gradient(135deg,#5A4A2A,var(--gold))">P</div><div class="team-name">Shrikant Kalekar</div><div class="team-role">Director</div></div>
+    <div class="team-card"><div class="team-avatar" style="background:linear-gradient(135deg,var(--green-mid),var(--green-light))">A</div><div class="team-name">Ramakant Kalekar</div><div class="team-role">Director</div></div>
+  </div>
+</div></div>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-wrap" style="margin-bottom:12px;">
+        <div class="logo-icon" style="width:44px;height:44px;font-size:18px;">ME</div>
+        <div class="logo-text">
+          <span class="logo-name">Manjusha Enterprises</span>
+          <span class="logo-tagline" style="color:rgba(255,255,255,0.3);">Global Agro Exports</span>
+        </div>
+      </div>
+      <p>Premium Indian agro-products exported to 30+ countries since 2010.</p>
+      <p style="margin-top:12px; color:rgba(255,255,255,0.3);">Pune, Maharashtra, India</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="products.html">Products</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Our Products</h4>
+      <a href="products.html">Moringa Powder</a>
+      <a href="products.html">Makhana</a>
+      <a href="products.html">Turmeric Powder</a>
+      <a href="products.html">Chilli Powder</a>
+      <a href="products.html">Banana Powder</a>
+      <a href="products.html">Onion Powder</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:+918888815274">+91 88888 15274</a>
+      <a href="mailto:contact@manjushainternational.com">contact@manjushainternational.com</a>
+      <a href="contact.html">Pune, Maharashtra</a>
+      <a href="#">IEC: AAACM1234F</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Manjusha Enterprises. All rights reserved.</p>
+    <p>APEDA Certified - FSSAI Approved</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
