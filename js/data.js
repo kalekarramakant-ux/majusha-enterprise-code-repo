@@ -1,5 +1,5 @@
 ﻿var PRODUCTS = [
-  { name:'Moringa Powder', desc:'100% pure drumstick leaf powder - rich in antioxidants, vitamins & minerals.', tag:'Superfood', origin:'Rajasthan, India', img:'https://images.unsplash.com/photo-1610348725531-843dff563e2c?w=600&q=80' },
+  { name:'Moringa Powder', desc:'100% pure drumstick leaf powder - rich in antioxidants, vitamins & minerals.', tag:'Superfood', origin:'Rajasthan, India', img:'https://unsplash.com/photos/a-wooden-spoon-rests-on-a-pile-of-green-powder-uedy0JTHFWM?w=600&q=80' },
   { name:'Makhana (Fox Nuts)', desc:'Premium lotus seeds - naturally low in fat, high in protein.', tag:'Superfood', origin:'Bihar, India', img:'https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=600&q=80' },
   { name:'Turmeric Powder', desc:'High-curcumin turmeric from Sangli farms. Vibrant colour, intense aroma.', tag:'Spice', origin:'Sangli, Maharashtra', img:'https://images.unsplash.com/photo-1615485500704-8e990f9900f7?w=600&q=80' },
   { name:'Red Chilli Powder', desc:'Kashmiri and Guntur variety - deep colour, balanced heat, rich flavour.', tag:'Spice', origin:'Guntur, Andhra Pradesh', img:'https://images.unsplash.com/photo-1583119022894-919a68a3d0e3?w=600&q=80' },
